@@ -2,16 +2,11 @@ import Head from "next/head";
 import data from "../../assets/data.json"
 import titleFormatter from "../../helpers/titleFormatter";
 import {ChevronLeftIcon} from "@heroicons/react/24/outline";
-import {BlockTitle, Card, Link, List, ListItem, Navbar, Page} from "konsta/react";
+import {BlockTitle, Card, Link, List, Navbar, Page} from "konsta/react";
 import {useRouter} from "next/router";
-import DetailRecord from "../../components/DetailRecord";
-import transactionRecord from "../../assets/transaction_record_dummy_data.json"
 import {Chip} from "konsta/react";
 import recommendations from "../../assets/recommendation.json"
 import {useState} from "react";
-
-const vip_store = [data[0], data[2]]
-
 export default function RecommendationList() {
     const router = useRouter()
     const [filtered_recommendations, setFilteredRecommendations] = useState(recommendations)
