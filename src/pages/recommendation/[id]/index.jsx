@@ -12,9 +12,8 @@ import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
-export default function Recommend({reco: {id, stores}}) {
+export default function Recommend({reco: {id, stores, name}}) {
     const router = useRouter()
-    console.log(stores);
     return (
         <Page>
             <Head>
@@ -25,7 +24,7 @@ export default function Recommend({reco: {id, stores}}) {
                     left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon className={"h-4 w-4"}/>返回</Link>}/>
             <Block>
                 <Map className={styles.homeMap} center={DEFAULT_CENTER} zoom={16}>
-                    {({TileLayer, Marker, Popup, Polyline}) => (
+                    {({TileLayer, Marker, Popup}) => (
                         <>
                             <TileLayer
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

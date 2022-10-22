@@ -81,6 +81,7 @@ export default function Home() {
             <List>
                 <ListItem href="/wallet/detail" title="交易明細"/>
                 <ListItem href="/wallet/pay" title="支付"/>
+                <ListItem href="/store" title="商店列表"/>
             </List>
 
 
