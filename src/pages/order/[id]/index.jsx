@@ -34,19 +34,19 @@ export default function Order({place: {id, name, img, items}}) {
 
     function increaseItem(itemID){
         let newOrder = order;
-        let item_to_mod = newOrder.item.findIndex((it) => it.id == itemID)
+        let item_to_mod = newOrder.item.findIndex((it) => it.id === itemID)
         newOrder.item[item_to_mod].amount += 1;
         setOrder(newOrder)
     }
     function decreaseItem(itemID){
         let newOrder = order;
-        let item_to_mod = newOrder.item.findIndex((it) => it.id == itemID)
+        let item_to_mod = newOrder.item.findIndex((it) => it.id === itemID)
         newOrder.item[item_to_mod].amount -= 1;
         setOrder(newOrder)
     }
     function getItemAmount(itemID){
         let newOrder = order;
-        let item_to_mod = newOrder.item.findIndex((it) => it.id == itemID)
+        let item_to_mod = newOrder.item.findIndex((it) => it.id === itemID)
         return newOrder.item[item_to_mod].amount;
     }
 
