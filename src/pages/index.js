@@ -20,7 +20,7 @@ export default function Home() {
             <Navbar title="Mapay ‧ 食支旅圖"/>
             <Block>
                 <Map className={styles.homeMap} center={DEFAULT_CENTER} zoom={16}>
-                    {({TileLayer, Marker, Popup}) => (
+                    {({TileLayer, Marker, Popup, Polyline}) => (
                         <>
                             <TileLayer
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -31,6 +31,7 @@ export default function Home() {
                                     test
                                 </Popup>
                             </Marker>
+                            <Polyline positions={data.map((item) => [item.lat, item.lng])}/>
                             {data.map((place) => (
                                 <Marker position={[place.lat, place.lng]}>
                                     <Popup>
