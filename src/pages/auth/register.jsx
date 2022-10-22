@@ -141,25 +141,6 @@ export default function Register() {
                         </div>
 
                         <div>
-                            <label htmlFor="store_name" className="block text-sm font-medium text-gray-700">
-                                商家名稱
-                            </label>
-                            <div className="mt-1">
-                                <input
-                                    id="store_name"
-                                    name="store_name"
-                                    type="text"
-                                    autoComplete="store_name"
-                                    required
-                                    onChange={(e) => setStoreName(e.target.value)}
-                                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                />
-                            </div>
-                        </div>
-
-
-
-                        <div>
                             <label className="block text-sm font-medium text-gray-700">
                                 註冊身份
                             </label>
@@ -215,6 +196,25 @@ export default function Register() {
                                 </RadioGroup>
                             </div>
                         </div>
+
+
+                        <div className={selected.name !== '商家' && 'hidden'}>
+                            <label htmlFor="store_name" className="block text-sm font-medium text-gray-700">
+                                商家名稱
+                            </label>
+                            <div className="mt-1">
+                                <input
+                                    id="store_name"
+                                    name="store_name"
+                                    type="text"
+                                    autoComplete="store_name"
+                                    required
+                                    onChange={(e) => setStoreName(e.target.value)}
+                                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                />
+                            </div>
+                        </div>
+
 
                         <div className={selected.name !== '用戶' && "hidden" }>
                             <button
