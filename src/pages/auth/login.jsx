@@ -1,10 +1,9 @@
 import Head from "next/head";
 import {useRouter} from "next/router";
 import titleFormatter from "../../helpers/titleFormatter";
-import {Card, Link, Navbar, Page} from "konsta/react";
+import {Link, Navbar, Page} from "konsta/react";
 import {ChevronLeftIcon} from "@heroicons/react/24/outline";
 import {useState} from "react";
-import axios from "axios";
 import {api} from "../../helpers/api";
 import Swal from "sweetalert2";
 

@@ -1,11 +1,10 @@
 import Head from "next/head";
 import titleFormatter from "../../../helpers/titleFormatter";
-import {Block, Navbar, Page, Link, BlockTitle, List, ListItem, Button} from "konsta/react";
+import {Block, Navbar, Page, Link, } from "konsta/react";
 import data from "../../../assets/data.json";
 import {ChevronLeftIcon} from "@heroicons/react/24/outline";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
-import {Popup} from "konsta/react";
 import QRCode from "react-qr-code";
 
 export default function OrderSubmit({place: {id}}) {
