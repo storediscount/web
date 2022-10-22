@@ -15,6 +15,7 @@ import {CurrencyDollarIcon, HomeIcon, UserCircleIcon} from "@heroicons/react/24/
 import {Popover} from "konsta/react";
 import {Tabbar, TabbarLink} from "konsta/react";
 import {Icon} from "konsta/react";
+import recommendations from "../assets/recommendation.json"
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
@@ -23,9 +24,9 @@ export default function Home() {
     const [popoverOpened, setPopoverOpened] = useState(false);
     const [currentSheetId, setCurrentSheetId] = useState("1");
 
-    const [activeTab, setActiveTab] = useState('tab-1');
     const [isTabbarLabels, setIsTabbarLabels] = useState(true);
     const [isTabbarIcons, setIsTabbarIcons] = useState(false);
+
     const popoverTargetRef = useRef()
     const router = useRouter()
     const openSheet = (id) => {
@@ -63,28 +64,17 @@ export default function Home() {
                     )}
                 </Map>
             </Block>
-
-            <Block strong>
-                <p>
-                    測試
-                </p>
-            </Block>
             <BlockTitle>推薦行程</BlockTitle>
             <Block>
-                <MenuList>
-                    <MenuListItem
-                        title="行程1"
-                        onClick={()=>router.push('/recommendation/1')}
-                    />
-                    <MenuListItem
-                        title="行程2"
-                        onClick={()=>router.push('/recommendation/2')}
-                    />
-                    <MenuListItem
-                        title="行程3"
-                        onClick={()=>router.push('/recommendation/3')}
-                    />
-                </MenuList>
+                <List strong>
+                    {recommendations.map(recommend=>(
+                        <ListItem
+                            link
+                            title={recommend.name}
+                            onClick={()=>router.push(`/recommendation/${recommend.id}`)}
+                        />
+                    ))}
+                </List>
             </Block>
             <BlockTitle>功能選單</BlockTitle>
             <List>
