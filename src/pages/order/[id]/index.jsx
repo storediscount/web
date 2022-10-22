@@ -9,23 +9,50 @@ import {useRouter} from "next/router";
 import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 import {useState} from "react";
 import {Popup} from "konsta/react";
+import {Stepper} from "konsta/react";
+
 
 export default function Order({place: {id, name, img, items}}) {
     const router = useRouter()
-    const [popupOpened, setPopupOpened] = useState(false);
-
-    let order = {
+    const [cartPopUp, setCartPopUp] = useState(false);
+    const [modifyAmountPopUp, setModifyAmountPopUp] = useState(false);
+    const [nowModifyingItem, setNowModifyingItem] = useState(0);
+    const [nowItemAmount, setNowItemAmount] = useState(0);
+    const [order, setOrder] = useState({
         storeID: 0,
         item: [
             {
                 id: 1,
-                amount: 1
+                amount: 0
             },
             {
                 id: 2,
-                amount: 2
+                amount: 0
             }
         ]
+    });
+
+    function increaseItem(itemID){
+        let newOrder = order;
+        let item_to_mod = newOrder.item.findIndex((it) => it.id == itemID)
+        newOrder.item[item_to_mod].amount += 1;
+        setOrder(newOrder)
+    }
+    function decreaseItem(itemID){
+        let newOrder = order;
+        let item_to_mod = newOrder.item.findIndex((it) => it.id == itemID)
+        newOrder.item[item_to_mod].amount += 1;
+        setOrder(newOrder)
+    }
+    function getItemAmount(itemID){
+        let newOrder = order;
+        let item_to_mod = newOrder.item.findIndex((it) => it.id == itemID)
+        return newOrder.item[item_to_mod].amount;
+    }
+
+
+    function getItemInOrder(id){
+        return order.item.findIndex(it => it.id === id)
     }
 
     return (
@@ -42,6 +69,11 @@ export default function Order({place: {id, name, img, items}}) {
             <List strongIos outlineIos>
                 {items.map(item => (
                     <ListItem
+                        onClick={() => {
+                            setNowModifyingItem(item.id)
+                            setNowItemAmount(getItemAmount(item.id))
+                            setModifyAmountPopUp(true)
+                        }}
                         link
                         // href={`/store/${sid}`}
                         chevronMaterial={false}
@@ -62,22 +94,51 @@ export default function Order({place: {id, name, img, items}}) {
                 ))}
             </List>
 
-            <Button onClick={() => setPopupOpened(true)}>檢視您的購物車</Button>
+            <Button onClick={() => setCartPopUp(true)}>檢視您的購物車</Button>
 
-            <Popup opened={popupOpened} onBackdropClick={() => setPopupOpened(false)}>
+            <Popup opened={cartPopUp} onBackdropClick={() => setCartPopUp(false)}>
                 <Page>
                     <Navbar
                         title="檢視您的購物車"
                         right={
-                            <Link navbar onClick={() => setPopupOpened(false)}>
+                            <Link navbar onClick={() => setCartPopUp(false)}>
                                 Close
                             </Link>
                         }
                     />
                     <Block className="space-y-4">
                         {
-                            order.item.map(it => <p>{items.find(i => it.id === i.id)}*{it.amount}</p>)
+                            order.item.map(item_to_show => <p>{items.find(i => i.id === item_to_show.id).name}*{item_to_show.amount}</p>)
                         }
+                    </Block>
+                </Page>
+            </Popup>
+
+            <Popup opened={modifyAmountPopUp} onBackdropClick={() => setModifyAmountPopUp(false)}>
+                <Page>
+                    <Navbar
+                        title="新購買項目"
+                        right={
+                            <Link navbar onClick={() => setCartPopUp(false)}>
+
+                            </Link>
+                        }
+                    />
+                    <Block className="space-y-4">
+                        <Stepper
+                            value={nowItemAmount}
+                            large
+                            rounded
+                            outline
+                            onPlus={() => {
+                                setNowItemAmount(nowItemAmount+1)
+                                increaseItem(nowModifyingItem)
+                            }}
+                            onMinus={() => {
+                                setNowItemAmount(nowItemAmount-1)
+                                decreaseItem(nowModifyingItem)
+                            }}
+                        />
                     </Block>
                 </Page>
             </Popup>
