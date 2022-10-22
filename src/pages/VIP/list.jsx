@@ -2,10 +2,8 @@ import Head from "next/head";
 import data from "../../assets/data.json"
 import titleFormatter from "../../helpers/titleFormatter";
 import {ChevronLeftIcon} from "@heroicons/react/24/outline";
-import {BlockTitle, Link, List, ListItem, Navbar, Page} from "konsta/react";
+import {BlockTitle, Link, List, Navbar, Page} from "konsta/react";
 import {useRouter} from "next/router";
-import DetailRecord from "../../components/DetailRecord";
-import transactionRecord from "../../assets/transaction_record_dummy_data.json"
 
 const vip_store = [data[0], data[2]]
 
