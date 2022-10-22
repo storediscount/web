@@ -45,9 +45,9 @@ export default function Store({place: {id, lat, lng, name, img}}) {
                     )}
                 </Map>
             {/*</Block>*/}
-            <Block strong inset outline>
-                <img src={"/images/store/"+img}/>
-            </Block>
+            {/*<Block strong inset outline>*/}
+            {/*    <img src={"/images/store/"+img}/>*/}
+            {/*</Block>*/}
 
             <BlockTitle>商家資訊</BlockTitle>
             <Block strong>
@@ -77,17 +77,18 @@ export default function Store({place: {id, lat, lng, name, img}}) {
             </List>
 
             <BlockTitle>成為熟客</BlockTitle>
+
             <List strongIos outlineIos>
                 <ListItem
-                    title="VIP"
+                    title="VIP 💎"
                     text="訂單 98 折"
                 />
                 <ListItem
-                    title="VVIP"
+                    title="VVIP 💎💎"
                     text="訂單 95 折，且享有生日贈禮"
                 />
                 <ListItem
-                    title="VVVIP"
+                    title="VVVIP 💎💎💎"
                     text="訂單 92 折，且享有生日贈禮"
                 />
             </List>
