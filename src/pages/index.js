@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Map from '../components/Map';
 
 import styles from '../../styles/Home.module.css';
-import {Block, Navbar, Page} from "konsta/react";
+import {Block, Link, Navbar, Page} from "konsta/react";
 import {BlockTitle, List, ListItem} from "konsta/react";
 import data from "../assets/data.json"
 import titleFormatter from "../helpers/titleFormatter";
@@ -35,7 +35,7 @@ export default function Home() {
                             {data.map((place) => (
                                 <Marker position={[place.lat, place.lng]}>
                                     <Popup>
-                                        {place.name}
+                                        <Link href={"/store/" + place.id}>{place.name}</Link>
                                     </Popup>
                                 </Marker>
                             ))}
