@@ -7,16 +7,12 @@ import data from "../../../assets/data.json";
 import recommendation from "../../../assets/recommendation.json";
 import {ChevronLeftIcon, HandThumbDownIcon, HandThumbUpIcon} from "@heroicons/react/24/outline";
 import {useRouter} from "next/router";
+import {getObjectByID} from "../../../helpers/utility";
 import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
-function getStoreByID(id){
-    console.log(id)
-    return data.find(ele => ele.id === id)
-}
-
-export default function Recommend({reco: {id, name, stores}}) {
+export default function Recommend({reco: {id, stores}}) {
     const router = useRouter()
     console.log(stores);
     return (
@@ -25,7 +21,7 @@ export default function Recommend({reco: {id, name, stores}}) {
                 <title>{titleFormatter("推薦行程："+name)}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <Navbar title={titleFormatter("推薦行程："+name)}
+            <Navbar title={titleFormatter(name)}
                     left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon className={"h-4 w-4"}/>返回</Link>}/>
             <Block>
                 <Map className={styles.homeMap} center={DEFAULT_CENTER} zoom={16}>
@@ -36,9 +32,9 @@ export default function Recommend({reco: {id, name, stores}}) {
                                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                             />
                             {stores.map(sid => (
-                                    <Marker position={[getStoreByID(sid).lat, getStoreByID(sid).lng]}>
+                                    <Marker position={[getObjectByID(sid).lat, getObjectByID(sid).lng]}>
                                         <Popup>
-                                            <Link onClick={() => openSheet(getStoreByID(sid).id)}>{getStoreByID(sid).name}</Link>
+                                            <Link onClick={() => openSheet(getObjectByID(sid).id)}>{getObjectByID(sid).name}</Link>
                                         </Popup>
                                     </Marker>
                             ))}
@@ -54,14 +50,15 @@ export default function Recommend({reco: {id, name, stores}}) {
                         link
                         href={`/store/${sid}`}
                         chevronMaterial={false}
-                        title={getStoreByID(sid).name}
-                        after={getStoreByID(sid).name}
-                        subtitle={getStoreByID(sid).name}
-                        text={"../images/store/" + getStoreByID(sid).img}
+                        title={getObjectByID(sid).name}
+                        after={getObjectByID(sid).name}
+                        subtitle={getObjectByID(sid).name}
+                        // text={getObjectByID(sid).name}
+                        text={"../images/store/" + getObjectByID(sid).img}
                         media={
                             <img
                                 className="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
-                                src={"../images/store/" + getStoreByID(sid).img}
+                                src={"../images/store/" + getObjectByID(sid).img}
                                 width="90"
                                 alt="demo"
                             />

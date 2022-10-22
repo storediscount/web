@@ -52,6 +52,7 @@ export default function Me() {
                             </svg>
                           </span>
                     </div>
+                    <Button onClick={() => router.push('/seller')} className={`mt-8 ${user.type!=="商家" && "hidden"}`}>商家管理頁面</Button>
                     <Button onClick={() => logout()} className={`mt-8 ${!logined && "hidden"}`}>登出</Button>
                 </Card>
             </div>
