@@ -27,7 +27,7 @@ export default function Home() {
                             />
                             <Marker position={DEFAULT_CENTER}>
                                 <Popup>
-                                    A pretty CSS3 popup. <br/> Easily customizable.
+                                    test
                                 </Popup>
                             </Marker>
                         </>
