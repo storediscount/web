@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "滿500折100優惠券",
+        "minPriceRequire": "500",
+        "discountValue": "100",
+        "discountPercentage": "1",
+        "description": "單筆消費滿500即可用此券折抵100元"
+    },
+    {
+        "id": 2,
+        "name": "9折券",
+        "minPriceRequire": "0",
+        "discountValue": "0",
+        "discountPercentage": "0.9",
+        "description": "任意金額消費可用此券獲得9折優惠"
+    }
+]
