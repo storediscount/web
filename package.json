@@ -11,6 +11,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.12",
     "html5-qrcode": "^2.2.3",
     "konsta": "^1.0.2",
     "leaflet": "^1.7.1",

@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@heroicons/react': ^2.0.12
   autoprefixer: ^10.4.12
   html5-qrcode: ^2.2.3
   konsta: ^1.0.2
@@ -14,6 +15,7 @@ specifiers:
   tailwindcss: ^3.2.1
 
 dependencies:
+  '@heroicons/react': 2.0.12_react@17.0.2
   html5-qrcode: 2.2.3
   konsta: 1.0.2
   leaflet: 1.9.2
@@ -29,6 +31,14 @@ devDependencies:
   tailwindcss: 3.2.1
 
 packages:
+
+  /@heroicons/react/2.0.12_react@17.0.2:
+    resolution: {integrity: sha512-FZxKh3i9aKIDxyALTgIpSF2t6V6/eZfF5mRu41QlwkX3Oxzecdm1u6dpft6PQGxIBwO7TKYWaMAYYL8mp/EaOg==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      react: 17.0.2
+    dev: false
 
   /@next/env/12.0.10:
     resolution: {integrity: sha512-mQVj0K6wQ5WEk/sL9SZ+mJXJUaG7el8CpZ6io1uFe9GgNTSC7EgUyNGqM6IQovIFc5ukF4O/hqsdh3S/DCgT2g==}

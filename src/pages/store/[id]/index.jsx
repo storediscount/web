@@ -1,18 +1,21 @@
 import Head from "next/head";
 import titleFormatter from "../../../helpers/titleFormatter";
-import {Block, BlockTitle, List, ListItem, Navbar, Page} from "konsta/react";
+import {Block, Navbar, Page, Link} from "konsta/react";
 import Map from "../../../components/Map";
 import styles from "../../../../styles/Home.module.css";
 import data from "../../../assets/data.json";
+import {ChevronLeftIcon, HandThumbDownIcon, HandThumbUpIcon} from "@heroicons/react/24/outline";
+import {useRouter} from "next/router";
 
 export default function Store({ place: {lat, lng, name} }) {
+    const router = useRouter()
     return (
         <Page>
             <Head>
                 <title>{titleFormatter(name)}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <Navbar title={titleFormatter(name)}/>
+            <Navbar title={titleFormatter(name)} left={<Link onClick={()=>router.back()} navbar><ChevronLeftIcon class={"h-4 w-4"}/>返回</Link>}/>
             <Block>
                 <Map className={styles.homeMap} center={[lat, lng]} zoom={20}>
                     {({TileLayer, Marker, Popup}) => (
@@ -23,7 +26,7 @@ export default function Store({ place: {lat, lng, name} }) {
                             />
                             <Marker position={[lat, lng]}>
                                 <Popup>
-                                    test
+                                    {name}
                                 </Popup>
                             </Marker>
                         </>
@@ -35,6 +38,10 @@ export default function Store({ place: {lat, lng, name} }) {
                 <p>
                     <strong>商家名稱:</strong> {name}
                 </p>
+                <div className={"flex flex-row"}>
+                    <HandThumbUpIcon className={"h-8 w-8"}/>
+                    <HandThumbDownIcon className={"h-8 w-8"}/>
+                </div>
                 <p>
                     <strong>提供優惠:</strong> 沒有啦
                 </p>
