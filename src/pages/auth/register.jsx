@@ -15,7 +15,8 @@ export default function Register() {
             password,
             name
         }).then((res)=>{
-            localStorage.setItem('token', res.data)
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('user', JSON.stringify(res.data.user))
 
             Swal.fire({
                 icon: 'success',

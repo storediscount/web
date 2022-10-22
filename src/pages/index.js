@@ -125,7 +125,7 @@ export default function Home() {
                 ></TabbarLink>
                 <TabbarLink tabbar
                             className={"flex flex-col items-center justify-center"}
-                            onClick={() => router.pathname === "/me"}
+                            onClick={() => router.push("/me")}
                             icon={<Icon ios={<UserCircleIcon/>} className={"w-6 h-6"}/>}
                             active={router.pathname === "/me"}
                             label={isTabbarLabels && "我的"}
