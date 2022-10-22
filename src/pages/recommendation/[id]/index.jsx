@@ -25,7 +25,7 @@ export default function Recommend({reco: {id, name, stores}}) {
                 <title>{titleFormatter("推薦行程："+name)}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <Navbar title={titleFormatter("推薦行程："+name)}
+            <Navbar title={titleFormatter(name)}
                     left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon className={"h-4 w-4"}/>返回</Link>}/>
             <Block>
                 <Map className={styles.homeMap} center={DEFAULT_CENTER} zoom={16}>
