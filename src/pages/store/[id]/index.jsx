@@ -17,7 +17,7 @@ export default function Store({place: {id, lat, lng, name}}) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Navbar title={titleFormatter(name)}
-                    left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon class={"h-4 w-4"}/>返回</Link>}/>
+                    left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon className={"h-4 w-4"}/>返回</Link>}/>
             <Block>
                 <Map className={styles.homeMap} center={[lat, lng]} zoom={20}>
                     {({TileLayer, Marker, Popup}) => (
