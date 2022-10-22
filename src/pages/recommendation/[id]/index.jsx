@@ -51,12 +51,13 @@ export default function Recommend({reco: {id, stores}}) {
                         title={data[sid].name}
                         after={data[sid].name}
                         subtitle={data[sid].name}
-                        text={data[sid].name}
+                        // text={data[sid].name}
+                        text={"images/store/" + data[sid].img}
                         media={
                             <img
                                 className="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
-                                src={"../../../assets/" + data[sid]}
-                                width="80"
+                                src={"images/store/" + data[sid].img}
+                                width="90"
                                 alt="demo"
                             />
                         }
