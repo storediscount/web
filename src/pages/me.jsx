@@ -56,29 +56,32 @@ export default function Me() {
                             </svg>
                           </span>
                     </div>
-                    <Block>
-                        餘額： 0點
-                    </Block>
-                    <List>
-                        <ListItem
-                            className={"bg-gray-200"}
-                            href={"/achievement"}
-                            text={"成就與徽章"}
-                        ></ListItem>
-                        <ListItem
-                            className={"bg-gray-200"}
-                            href={"/wallet/detail"}
-                            text={"交易紀錄"}
-                        ></ListItem>
-                        <ListItem
-                            className={"bg-gray-200"}
-                            href={"/store/favorite"}
-                            text={"收藏商家"}
-                        ></ListItem>
-                    </List>
-                    <Button onClick={() => router.push('/seller')}
-                            className={`mt-8 ${user.type !== "商家" && "hidden"}`}>商家管理頁面</Button>
-                    <Button onClick={() => logout()} className={`mt-8 ${!logined && "hidden"}`}>登出</Button>
+                    <div className={`${!logined && "hidden"}`}>
+
+                        <Block>
+                            餘額： 0點
+                        </Block>
+                        <List>
+                            <ListItem
+                                className={"bg-gray-200"}
+                                href={"/achievement"}
+                                text={"成就與徽章"}
+                            ></ListItem>
+                            <ListItem
+                                className={"bg-gray-200"}
+                                href={"/wallet/detail"}
+                                text={"交易紀錄"}
+                            ></ListItem>
+                            <ListItem
+                                className={"bg-gray-200"}
+                                href={"/store/favorite"}
+                                text={"收藏商家"}
+                            ></ListItem>
+                        </List>
+                        <Button onClick={() => router.push('/seller')}
+                                className={`mt-8 ${user.type !== "商家" && "hidden"}`}>商家管理頁面</Button>
+                        <Button onClick={() => logout()} className={`mt-8 `}>登出</Button>
+                    </div>
                 </Card>
             </div>
         </Page>
