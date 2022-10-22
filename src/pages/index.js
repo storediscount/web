@@ -75,6 +75,12 @@ export default function Home() {
                             onClick={()=>router.push(`/recommendation/${recommend.id}`)}
                         />
                     ))}
+                    <ListItem
+                        link
+                        className={"font-bold"}
+                        title={'顯示更多...'}
+                        onClick={()=>router.push(`/recommendation`)}
+                    />
                 </List>
             </Block>
             <BlockTitle>功能選單</BlockTitle>
