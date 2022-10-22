@@ -3,36 +3,43 @@
     "id": "1",
     "lat": 24.7980959,
     "lng": 120.9940404,
-    "name": "商家A"
+    "name": "商家A",
+    "img": "./img/store_A.png"
   },
   {
     "id": "2",
     "lat": 24.7989759,
     "lng": 120.9960204,
-    "name": "商家B"
+    "name": "商家B",
+    "img": "./img/store_B.png"
+
   },
   {
     "id": "3",
     "lat": 24.7961217,
     "lng": 120.9966699,
-    "name": "商家C"
+    "name": "商家C",
+    "img": "img/store_C.png"
   },
   {
     "id": "4",
     "lat": 24.79648913220069,
     "lng": 120.99830757300744,
-    "name": "開源社香雞排"
+    "name": "開源社香雞排",
+    "img": "img/store_KWS_jipai.png"
   },
   {
     "id": "5",
     "lat": 24.79900083697299,
     "lng": 120.99796697268016,
-    "name": "白鬍子牛排清大店"
+    "name": "白鬍子牛排清大店",
+    "img": "img/store_BHZ_steak.png"
   },
   {
     "id": "6",
     "lat": 24.796931761566174,
     "lng": 120.99839779660648,
-    "name": "立晉傳統豆花"
+    "name": "立晉傳統豆花",
+    "img": "img/store_LZH_douhua.png"
   }
 ]

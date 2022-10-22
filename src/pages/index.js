@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Map from '../components/Map';
 
 import styles from '../../styles/Home.module.css';
-import {Block, Link, Navbar, Page} from "konsta/react";
+import {Block, Link, MenuList, MenuListItem, Navbar, Page} from "konsta/react";
 import {BlockTitle, List, ListItem} from "konsta/react";
 import data from "../assets/data.json"
 import titleFormatter from "../helpers/titleFormatter";
@@ -68,6 +68,23 @@ export default function Home() {
                 <p>
                     測試
                 </p>
+            </Block>
+            <BlockTitle>推薦行程</BlockTitle>
+            <Block>
+                <MenuList>
+                    <MenuListItem
+                        title="行程1"
+                        onClick={()=>router.push('/recommendation/1')}
+                    />
+                    <MenuListItem
+                        title="行程2"
+                        onClick={()=>router.push('/recommendation/2')}
+                    />
+                    <MenuListItem
+                        title="行程3"
+                        onClick={()=>router.push('/recommendation/3')}
+                    />
+                </MenuList>
             </Block>
             <BlockTitle>功能選單</BlockTitle>
             <List>
