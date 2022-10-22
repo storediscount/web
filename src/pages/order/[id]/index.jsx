@@ -123,7 +123,7 @@ export default function Order({place: {id, name, img, items}}) {
                         title="新購買項目"
                         right={
                             <Link navbar onClick={() => setCartPopUp(false)}>
-
+                                Close
                             </Link>
                         }
                     />
