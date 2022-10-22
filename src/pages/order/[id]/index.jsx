@@ -1,12 +1,9 @@
 import Head from "next/head";
 import titleFormatter from "../../../helpers/titleFormatter";
 import {Block, Navbar, Page, Link, BlockTitle, List, ListItem, Button} from "konsta/react";
-import Map from "../../../components/Map";
-import styles from "../../../../styles/Home.module.css";
 import data from "../../../assets/data.json";
 import {ChevronLeftIcon, HandThumbDownIcon, HandThumbUpIcon} from "@heroicons/react/24/outline";
 import {useRouter} from "next/router";
-import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 import {useState} from "react";
 import {Popup} from "konsta/react";
 import {Stepper} from "konsta/react";
@@ -20,21 +17,19 @@ export default function Order({place: {id, name, img, items}}) {
     const [nowItemAmount, setNowItemAmount] = useState(0);
     const [order, setOrder] = useState({
         storeID: 0,
-        item: [
-            {
-                id: 1,
-                amount: 0
-            },
-            {
-                id: 2,
-                amount: 0
-            }
-        ]
+        item: []
     });
 
     function increaseItem(itemID){
         let newOrder = order;
         let item_to_mod = newOrder.item.findIndex((it) => it.id === itemID)
+        if (item_to_mod < 0){
+            newOrder.item.push({
+                id: itemID,
+                amount: 0
+            })
+            item_to_mod = newOrder.item.findIndex((it) => it.id === itemID)
+        }
         newOrder.item[item_to_mod].amount += 1;
         setOrder(newOrder)
     }
@@ -42,19 +37,17 @@ export default function Order({place: {id, name, img, items}}) {
         let newOrder = order;
         let item_to_mod = newOrder.item.findIndex((it) => it.id === itemID)
         newOrder.item[item_to_mod].amount -= 1;
+        if (newOrder.item[item_to_mod].amount <= 0)
+            newOrder.item.splice(item_to_mod,1)
         setOrder(newOrder)
     }
     function getItemAmount(itemID){
         let newOrder = order;
         let item_to_mod = newOrder.item.findIndex((it) => it.id === itemID)
+        if (item_to_mod < 0)
+            return 0;
         return newOrder.item[item_to_mod].amount;
     }
-
-
-    function getItemInOrder(id){
-        return order.item.findIndex(it => it.id === id)
-    }
-
     return (
         <Page>
             <Head>
@@ -94,11 +87,16 @@ export default function Order({place: {id, name, img, items}}) {
                 ))}
             </List>
 
-            <Button onClick={() => setCartPopUp(true)}>檢視您的購物車</Button>
-            <Button onClick={() => {
-                localStorage.setItem('order', JSON.stringify(order))
-                router.push(`/order/${id}/submit`)
-            }}>送出訂單</Button>
+            <Block>
+                <Button onClick={() => setCartPopUp(true)}>檢視您的購物車</Button>
+            </Block>
+            <Block>
+                <Button onClick={() => {
+                    calcOrder();
+                    localStorage.setItem('order', JSON.stringify(order))
+                    router.push(`/order/${id}/submit`)
+                }}>送出訂單</Button>
+            </Block>
 
             <Popup opened={cartPopUp} onBackdropClick={() => setCartPopUp(false)}>
                 <Page>
@@ -113,6 +111,14 @@ export default function Order({place: {id, name, img, items}}) {
                     <Block className="space-y-4">
                         {
                             order.item.map(item_to_show => <p>{items.find(i => i.id === item_to_show.id).name}*{item_to_show.amount}</p>)
+                        }
+                    </Block>
+                    <Block>
+                        {
+                            (() => {
+                                if (order.item.length <= 0)
+                                    return "您的購物車是空的！快去買點東西"
+                            })()
                         }
                     </Block>
                 </Page>
@@ -139,6 +145,7 @@ export default function Order({place: {id, name, img, items}}) {
                                 increaseItem(nowModifyingItem)
                             }}
                             onMinus={() => {
+                                if (nowItemAmount <= 0) return;
                                 setNowItemAmount(nowItemAmount-1)
                                 decreaseItem(nowModifyingItem)
                             }}

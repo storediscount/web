@@ -76,7 +76,8 @@
     "lat": 24.79648913220069,
     "lng": 120.99830757300744,
     "name": "開源社香雞排",
-    "img": "store_KWS_jipai.png",
+    "img": "store_KWS_jipai.jpg",
+    "subtitle": "炸物串與串炸餐廳",
     "items":
     [
       {
@@ -100,7 +101,8 @@
     "lat": 24.79900083697299,
     "lng": 120.99796697268016,
     "name": "白鬍子牛排清大店",
-    "img": "store_BHZ_steak.png",
+    "img": "store_BHZ_steak.jpg",
+    "subtitle": "牛排店",
     "items":
     [
       {
@@ -124,7 +126,8 @@
     "lat": 24.796931761566174,
     "lng": 120.99839779660648,
     "name": "立晉傳統豆花",
-    "img": "store_LZH_douhua.png",
+    "img": "store_LZH_douhua.jpg",
+    "subtitle": "傳統點心",
     "items":
     [
       {

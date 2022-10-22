@@ -50,10 +50,10 @@ export default function Recommend({reco: {id, stores, name}}) {
                         href={`/store/${sid}`}
                         chevronMaterial={false}
                         title={getObjectByID(sid).name}
-                        after={getObjectByID(sid).name}
-                        subtitle={getObjectByID(sid).name}
-                        // text={getObjectByID(sid).name}
-                        text={"../images/store/" + getObjectByID(sid).img}
+                        after="查看店家"
+                        subtitle={getObjectByID(sid).subtitle}
+                        text={getObjectByID(sid).description}
+                        // text={"../images/store/" + getObjectByID(sid).img}
                         media={
                             <img
                                 className="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
