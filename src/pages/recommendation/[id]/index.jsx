@@ -16,16 +16,16 @@ function getStoreByID(id){
     return data.find(ele => ele.id === id)
 }
 
-export default function Recommend({reco: {id, stores}}) {
+export default function Recommend({reco: {id, name, stores}}) {
     const router = useRouter()
     console.log(stores);
     return (
         <Page>
             <Head>
-                <title>{titleFormatter(id)}</title>
+                <title>{titleFormatter("推薦行程："+name)}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <Navbar title={titleFormatter(id)}
+            <Navbar title={titleFormatter("推薦行程："+name)}
                     left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon className={"h-4 w-4"}/>返回</Link>}/>
             <Block>
                 <Map className={styles.homeMap} center={DEFAULT_CENTER} zoom={16}>
@@ -57,7 +57,6 @@ export default function Recommend({reco: {id, stores}}) {
                         title={getStoreByID(sid).name}
                         after={getStoreByID(sid).name}
                         subtitle={getStoreByID(sid).name}
-                        // text={getStoreByID(sid).name}
                         text={"../images/store/" + getStoreByID(sid).img}
                         media={
                             <img
