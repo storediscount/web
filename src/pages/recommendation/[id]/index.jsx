@@ -47,6 +47,7 @@ export default function Recommend({reco: {id, stores}}) {
                 {stores.map(sid => (
                     <ListItem
                         link
+                        href={`/store/${sid}`}
                         chevronMaterial={false}
                         title={data[sid].name}
                         after={data[sid].name}
@@ -87,7 +88,6 @@ export async function getStaticProps(context) {
             notFound: true
         }
     }
-    console.log(reco)
     return {
         props: {
             reco
