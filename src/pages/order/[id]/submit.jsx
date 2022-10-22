@@ -12,7 +12,7 @@ export default function OrderSubmit({place: {id}}) {
     const [popupOpened, setPopupOpened] = useState(false);
     const [order, setOrder] = useState([])
     useEffect(()=>{
-        setOrder(JSON.parse(localStorage.getItem("order")) || [])
+        setOrder(JSON.parse(localStorage.getItem("order")).item || [])
     }, [router])
 
     return (

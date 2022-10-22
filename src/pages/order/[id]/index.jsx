@@ -97,6 +97,7 @@ export default function Order({place: {id, name, img, items}}) {
             <Button onClick={() => setCartPopUp(true)}>檢視您的購物車</Button>
             <Button onClick={() => {
                 localStorage.setItem('order', JSON.stringify(order))
+                router.push(`/order/${id}/submit`)
             }}>送出訂單</Button>
 
             <Popup opened={cartPopUp} onBackdropClick={() => setCartPopUp(false)}>
