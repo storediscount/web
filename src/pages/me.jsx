@@ -70,6 +70,11 @@ export default function Me() {
                             href={"/wallet/detail"}
                             text={"交易紀錄"}
                         ></ListItem>
+                        <ListItem
+                            className={"bg-gray-200"}
+                            href={"/store/favorite"}
+                            text={"收藏商家"}
+                        ></ListItem>
                     </List>
                     <Button onClick={() => router.push('/seller')}
                             className={`mt-8 ${user.type !== "商家" && "hidden"}`}>商家管理頁面</Button>

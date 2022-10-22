@@ -5,7 +5,13 @@ import Map from "../../../components/Map";
 import styles from "../../../../styles/Home.module.css";
 import data from "../../../assets/data.json";
 import transactionRecord from "../../../assets/transaction_record_dummy_data.json"
-import {ChevronLeftIcon, HandThumbDownIcon, HandThumbUpIcon} from "@heroicons/react/24/outline";
+import {
+    BookmarkIcon,
+    ChevronLeftIcon,
+    HandThumbDownIcon,
+    HandThumbUpIcon,
+    HeartIcon
+} from "@heroicons/react/24/outline";
 import {useRouter} from "next/router";
 import DetailRecord from "../../../components/DetailRecord";
 import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
@@ -19,7 +25,8 @@ export default function Store({place: {id, lat, lng, name}}) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Navbar title={titleFormatter(name)}
-                    left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon className={"h-4 w-4"}/>返回</Link>}/>
+                    left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon
+                        className={"h-4 w-4"}/>返回</Link>}/>
             <Block>
                 <Map className={styles.homeMap} center={[lat, lng]} zoom={20}>
                     {({TileLayer, Marker, Popup}) => (
@@ -40,13 +47,16 @@ export default function Store({place: {id, lat, lng, name}}) {
 
             <BlockTitle>商家資訊</BlockTitle>
             <Block strong>
+                <div className={"flex flex-row items-center justify-between"}>
+                    <div className={"flex flex-row items-center"}>
+                        <HandThumbUpIcon className={"h-4 w-4"}/> {Math.floor(Math.random() * 50) + 25} &nbsp;
+                        <HandThumbDownIcon className={"h-4 w-4"}/> {Math.floor(Math.random() * 25)}
+                    </div>
+                    <BookmarkIcon className={"h-6 w-6 cursor-pointer"}></BookmarkIcon>
+                </div>
                 <p>
                     <strong>商家名稱:</strong> {name}
                 </p>
-                <div className={"flex flex-row"}>
-                    <HandThumbUpIcon className={"h-8 w-8"}/>
-                    <HandThumbDownIcon className={"h-8 w-8"}/>
-                </div>
                 <p>
                     <strong>提供優惠:</strong> 沒有啦
                 </p>
@@ -58,7 +68,8 @@ export default function Store({place: {id, lat, lng, name}}) {
                     <ListItem
                         key={record.id}
                         text={
-                            <DetailRecord items={record.items} total={record.total} storeId={record.storeId} router={router}/>
+                            <DetailRecord items={record.items} total={record.total} storeId={record.storeId}
+                                          router={router}/>
                         }
                     />
                 ))}
