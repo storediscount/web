@@ -1,6 +1,6 @@
 import Head from "next/head";
 import {useRouter} from "next/router";
-import {Button, Card, Link, Navbar, Page} from "konsta/react";
+import {Block, Button, Card, Link, List, ListItem, Navbar, Page} from "konsta/react";
 import {ChevronLeftIcon} from "@heroicons/react/24/outline";
 import {useEffect, useState} from "react";
 import titleFormatter from "../helpers/titleFormatter";
@@ -17,7 +17,7 @@ export default function Me() {
             'icon': 'success',
             'title': '完成',
             'text': '登出成功'
-        }).then(()=>{
+        }).then(() => {
             router.replace('/')
         })
     }
@@ -42,7 +42,11 @@ export default function Me() {
             <div className={"mt-8"}>
                 <Card>
                     <div className={"flex flex-row justify-center items-center gap-4"}>
-                        <Link href={"/auth/login"} className={`text-xl ${logined && 'hidden'}`}>登入 | 註冊</Link>
+                        <div>
+                            <Link href={"/auth/login"}
+                                  className={`text-xl ${logined && 'hidden'}`}>登入</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <Link href={"/auth/register"} className={`text-xl ${logined && 'hidden'}`}>註冊</Link>
+                        </div>
 
                         <p className={`text-xl ${!logined && 'hidden'}`}>Hi! {user?.name}</p>
                         <span className="inline-block h-12 w-12 overflow-hidden rounded-full bg-gray-100">
@@ -52,7 +56,23 @@ export default function Me() {
                             </svg>
                           </span>
                     </div>
-                    <Button onClick={() => router.push('/seller')} className={`mt-8 ${user.type!=="商家" && "hidden"}`}>商家管理頁面</Button>
+                    <Block>
+                        餘額： 0點
+                    </Block>
+                    <List>
+                        <ListItem
+                            className={"bg-gray-200"}
+                            href={"/achievement"}
+                            text={"成就與徽章"}
+                        ></ListItem>
+                        <ListItem
+                            className={"bg-gray-200"}
+                            href={"/wallet/detail"}
+                            text={"交易紀錄"}
+                        ></ListItem>
+                    </List>
+                    <Button onClick={() => router.push('/seller')}
+                            className={`mt-8 ${user.type !== "商家" && "hidden"}`}>商家管理頁面</Button>
                     <Button onClick={() => logout()} className={`mt-8 ${!logined && "hidden"}`}>登出</Button>
                 </Card>
             </div>
