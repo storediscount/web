@@ -1,0 +1,36 @@
+[
+    {
+        "id": "1",
+        "storeId": "6",
+        "items": [
+            {
+                "name": "豆花",
+                "number": "3",
+                "cost": "90"
+            },
+            {
+                "name": "粉圓冰",
+                "number": "2",
+                "cost": "100"
+            }
+        ],
+        "total": "190"
+    },
+    {   
+        "id": "2",
+        "storeId": "4",
+        "items": [
+            {
+                "name": "雞排",
+                "number": "1",
+                "cost": "60"
+            },
+            {
+                "name": "台南大扁",
+                "number": "1",
+                "cost": "20"
+            }
+        ],
+        "total": "80"
+    }
+]
