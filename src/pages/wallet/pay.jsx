@@ -4,8 +4,8 @@ import Html5QrcodePlugin from "../../components/QRCodeScanner";
 import titleFormatter from "../../helpers/titleFormatter";
 
 export default function WalletDetail() {
-    const result = () => {
-
+    const result = (res) => {
+        alert(JSON.stringify(res))
     }
     return (
         <Page>
