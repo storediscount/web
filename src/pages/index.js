@@ -69,6 +69,7 @@ export default function Home() {
                 <List strong>
                     {recommendations.map(recommend=>(
                         <ListItem
+                            key={recommend.id}
                             link
                             title={recommend.name}
                             onClick={()=>router.push(`/recommendation/${recommend.id}`)}
