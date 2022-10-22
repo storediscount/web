@@ -14,7 +14,7 @@
     {
         "id": "3",
         "title": "吃我一記金錢攻擊",
-        "description": "單次消費>=500",
+        "description": "單次消費>=200",
         "picture": "/images/badge/吃我一記金錢攻擊.png"
     },
     {
@@ -27,13 +27,13 @@
         "id": "5",
         "title": "沒有我到不了的地方",
         "description": "每個城市都打卡過至少一個地方",
-        "picture": "/images/badge/沒有我到不了的地方.png"
+        "picture": "/images/badge/尚未解鎖.png"
     },
     {
         "id": "6",
         "title": "我就是食神",
         "description": "消費餐廳>20個",
-        "picture": "/images/badge/我就是食神.png"
+        "picture": "/images/badge/尚未解鎖.png"
     },
     {
         "id": "7",
