@@ -65,7 +65,7 @@ export async function getStaticPaths() {
                 id: place.id.toString(),
             }
         })),
-        fallback: true
+        fallback: false
     };
 }
 
