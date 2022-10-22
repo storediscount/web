@@ -7,27 +7,27 @@ import data from "../../../assets/data.json";
 import {ChevronLeftIcon, HandThumbDownIcon, HandThumbUpIcon} from "@heroicons/react/24/outline";
 import {useRouter} from "next/router";
 
-export default function Store({place}) {
+export default function Store({place: {lat, lng, name}}) {
     const router = useRouter()
     return (
         <Page>
             <Head>
-                <title>{titleFormatter(place?.name)}</title>
+                <title>{titleFormatter(name)}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <Navbar title={titleFormatter(place?.name)}
+            <Navbar title={titleFormatter(name)}
                     left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon class={"h-4 w-4"}/>返回</Link>}/>
             <Block>
-                <Map className={styles.homeMap} center={[place?.lat, place?.lng]} zoom={20}>
+                <Map className={styles.homeMap} center={[lat, lng]} zoom={20}>
                     {({TileLayer, Marker, Popup}) => (
                         <>
                             <TileLayer
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                             />
-                            <Marker position={[place?.lat, place?.lng]}>
+                            <Marker position={[lat, lng]}>
                                 <Popup>
-                                    {place?.name}
+                                    {name}
                                 </Popup>
                             </Marker>
                         </>
@@ -37,7 +37,7 @@ export default function Store({place}) {
 
             <Block strong>
                 <p>
-                    <strong>商家名稱:</strong> {place?.name}
+                    <strong>商家名稱:</strong> {name}
                 </p>
                 <div className={"flex flex-row"}>
                     <HandThumbUpIcon className={"h-8 w-8"}/>
@@ -53,13 +53,11 @@ export default function Store({place}) {
 
 export async function getStaticPaths() {
     return {
-        paths: [
-            {
-                params: {
-                    "id": "1"
-                }
-            } // See the "paths" section below
-        ],
+        paths: data.map((place) => ({
+            params: {
+                id: place.id.toString(),
+            }
+        })),
         fallback: true
     };
 }
