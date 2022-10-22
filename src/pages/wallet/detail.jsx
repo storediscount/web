@@ -1,14 +1,15 @@
 import Head from "next/head";
 import {BlockTitle, List, ListItem, Navbar, Page} from "konsta/react";
+import titleFormatter from "../../helpers/titleFormatter";
 
 export default function WalletDetail() {
     return (
         <Page>
             <Head>
-                <title></title>
+                <title>{titleFormatter("錢包明細")}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <Navbar title="App"/>
+            <Navbar title={titleFormatter("錢包明細")}/>
 
             <BlockTitle>錢包明細</BlockTitle>
             <List strongIos outlineIos>

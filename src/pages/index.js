@@ -6,6 +6,7 @@ import styles from '../../styles/Home.module.css';
 import {Block, Navbar, Page} from "konsta/react";
 import {BlockTitle, List, ListItem} from "konsta/react";
 import data from "../assets/data.json"
+import titleFormatter from "../helpers/titleFormatter";
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
@@ -13,10 +14,10 @@ export default function Home() {
     return (
         <Page>
             <Head>
-                <title></title>
+                <title>{titleFormatter("")}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <Navbar title="My App"/>
+            <Navbar title="Mapay ‧ 食支旅圖"/>
             <Block>
                 <Map className={styles.homeMap} center={DEFAULT_CENTER} zoom={16}>
                     {({TileLayer, Marker, Popup}) => (
