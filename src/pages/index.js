@@ -4,12 +4,12 @@ import Map from '../components/Map';
 
 import styles from '../../styles/Home.module.css';
 import {Block, Navbar, Page} from "konsta/react";
-import {BlockTitle, Button, List, ListItem} from "konsta/react";
-import {useRouter} from "next/router";
-const DEFAULT_CENTER = [38.907132, -77.036546]
+import {BlockTitle, List, ListItem} from "konsta/react";
+import data from "../assets/data.json"
+
+const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
 export default function Home() {
-    const router = useRouter()
     return (
         <Page>
             <Head>
@@ -18,7 +18,7 @@ export default function Home() {
             </Head>
             <Navbar title="My App"/>
             <Block>
-                <Map className={styles.homeMap} center={DEFAULT_CENTER} zoom={12}>
+                <Map className={styles.homeMap} center={DEFAULT_CENTER} zoom={16}>
                     {({TileLayer, Marker, Popup}) => (
                         <>
                             <TileLayer
@@ -30,6 +30,13 @@ export default function Home() {
                                     test
                                 </Popup>
                             </Marker>
+                            {data.map((place) => (
+                                <Marker position={[place.lat, place.lng]}>
+                                    <Popup>
+                                        {place.name}
+                                    </Popup>
+                                </Marker>
+                            ))}
                         </>
                     )}
                 </Map>
@@ -37,19 +44,14 @@ export default function Home() {
 
             <Block strong>
                 <p>
-                    Here is your Next.js & Konsta UI app. Let's see what we have here.
+                    測試
                 </p>
             </Block>
-            <BlockTitle>Navigation</BlockTitle>
+            <BlockTitle>功能選單</BlockTitle>
             <List>
-                <ListItem href="/about/" title="About" />
-                <ListItem href="/form/" title="Form" />
+                <ListItem href="/wallet/detail" title="交易明細"/>
+                <ListItem href="/wallet/pay" title="支付"/>
             </List>
-
-            <Block strong className="flex space-x-4">
-                <Button onClick={()=>router.push('/wallet/detail')}>Button 1</Button>
-                <Button>Button 2</Button>
-            </Block>
         </Page>
     )
 }
