@@ -11,6 +11,11 @@ import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
+function getStoreByID(id){
+    console.log(id)
+    return data.find(ele => ele.id === id)
+}
+
 export default function Recommend({reco: {id, stores}}) {
     const router = useRouter()
     console.log(stores);
@@ -31,9 +36,9 @@ export default function Recommend({reco: {id, stores}}) {
                                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                             />
                             {stores.map(sid => (
-                                    <Marker position={[data[sid].lat, data[sid].lng]}>
+                                    <Marker position={[getStoreByID(sid).lat, getStoreByID(sid).lng]}>
                                         <Popup>
-                                            <Link onClick={() => openSheet(data[sid].id)}>{data[sid].name}</Link>
+                                            <Link onClick={() => openSheet(getStoreByID(sid).id)}>{getStoreByID(sid).name}</Link>
                                         </Popup>
                                     </Marker>
                             ))}
@@ -49,15 +54,15 @@ export default function Recommend({reco: {id, stores}}) {
                         link
                         href={`/store/${sid}`}
                         chevronMaterial={false}
-                        title={data[sid].name}
-                        after={data[sid].name}
-                        subtitle={data[sid].name}
-                        // text={data[sid].name}
-                        text={"../images/store/" + data[sid].img}
+                        title={getStoreByID(sid).name}
+                        after={getStoreByID(sid).name}
+                        subtitle={getStoreByID(sid).name}
+                        // text={getStoreByID(sid).name}
+                        text={"../images/store/" + getStoreByID(sid).img}
                         media={
                             <img
                                 className="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
-                                src={"../images/store/" + data[sid].img}
+                                src={"../images/store/" + getStoreByID(sid).img}
                                 width="90"
                                 alt="demo"
                             />
