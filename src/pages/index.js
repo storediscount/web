@@ -15,6 +15,8 @@ import {CurrencyDollarIcon, HomeIcon, UserCircleIcon} from "@heroicons/react/24/
 import {HomeIcon as HomeSolidIcon} from "@heroicons/react/24/solid";
 import {Popover} from "konsta/react";
 import {PlusIcon} from "@heroicons/react/24/solid";
+import {Tabbar, TabbarLink} from "konsta/react";
+import {Icon} from "konsta/react";
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
@@ -22,6 +24,10 @@ export default function Home() {
     const [sheetOpened, setSheetOpened] = useState(false);
     const [popoverOpened, setPopoverOpened] = useState(false);
     const [currentSheetId, setCurrentSheetId] = useState("1");
+
+    const [activeTab, setActiveTab] = useState('tab-1');
+    const [isTabbarLabels, setIsTabbarLabels] = useState(true);
+    const [isTabbarIcons, setIsTabbarIcons] = useState(false);
     const popoverTargetRef = useRef()
     const router = useRouter()
     const openSheet = (id) => {
@@ -99,10 +105,34 @@ export default function Home() {
             </Sheet>
 
 
-            <Toolbar
-                top={false}
-                className={`left-0 bottom-0 fixed w-full py-2 px-4`}
+            <div
+                ref={popoverTargetRef}></div>
+            <Tabbar
+                labels={isTabbarLabels}
+                icons={isTabbarIcons}
+                className="left-0 bottom-0 fixed"
             >
+                <TabbarLink tabbar
+                            className={"flex flex-col items-center justify-center"}
+                            onClick={() => router.push('/')}
+                            icon={<Icon ios={<HomeIcon/>} className={"w-6 h-6"}/>}
+                            active={router.pathname === "/"}
+                            label={isTabbarLabels && "首頁"}
+                ></TabbarLink>
+                <TabbarLink tabbar
+                            className={"flex flex-col items-center justify-center"}
+                            onClick={() => setPopoverOpened(true)}
+                            icon={<Icon ios={<CurrencyDollarIcon/>} className={"w-6 h-6"}/>}
+                            active={router.pathname.startsWith("/wallet")}
+                            label={isTabbarLabels && "支付"}
+                ></TabbarLink>
+                <TabbarLink tabbar
+                            className={"flex flex-col items-center justify-center"}
+                            onClick={() => router.pathname.startsWith("/me")}
+                            icon={<Icon ios={<UserCircleIcon/>} className={"w-6 h-6"}/>}
+                            active={router.pathname.startsWith("/me")}
+                            label={isTabbarLabels && "我的"}
+                ></TabbarLink>
                 <Popover
                     opened={popoverOpened}
                     target={popoverTargetRef.current}
@@ -122,23 +152,7 @@ export default function Home() {
                     </List>
                 </Popover>
 
-                <Link toolbar className={"flex flex-col items-center justify-center"} href={"/"}>
-                    {router.pathname === "/" ?
-                        <HomeSolidIcon className={"w-12 h-12"}/> :
-                        <HomeIcon className={"w-12 h-12"}/>
-                    }
-
-                    <div className={"text-sm"}>首頁</div>
-                </Link>
-                <Link toolbar className={"flex flex-col items-center justify-center"} ref={popoverTargetRef}>
-                    <CurrencyDollarIcon className={"w-12 h-12"} onClick={() => setPopoverOpened(true)}/>
-                    <div className={"text-sm"}>支付</div>
-                </Link>
-                <Link toolbar className={"flex flex-col items-center justify-center"}>
-                    <UserCircleIcon className={"w-12 h-12"}/>
-                    <div className={"text-sm"}>我的</div>
-                </Link>
-            </Toolbar>
+            </Tabbar>
         </Page>
     )
 }
