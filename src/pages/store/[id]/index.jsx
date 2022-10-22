@@ -16,6 +16,8 @@ import {useRouter} from "next/router";
 import DetailRecord from "../../../components/DetailRecord";
 import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 import Image from "next/image";
+import vip from "../../../assets/vip.json"
+// import {BlockColors} from "konsta/shared/esm/colors/BlockColors";
 
 export default function Store({place: {id, lat, lng, name, img}}) {
     const router = useRouter()
@@ -77,21 +79,24 @@ export default function Store({place: {id, lat, lng, name, img}}) {
             </List>
 
             <BlockTitle>成為熟客</BlockTitle>
-
-            <List strongIos outlineIos>
-                <ListItem
-                    title="VIP 💎"
-                    text="訂單 98 折"
-                />
-                <ListItem
-                    title="VVIP 💎💎"
-                    text="訂單 95 折，且享有生日贈禮"
-                />
-                <ListItem
-                    title="VVVIP 💎💎💎"
-                    text="訂單 92 折，且享有生日贈禮"
-                />
-            </List>
+            <Block>
+                <p>{"您現在的熟客等級："+vip[0][id]}</p>
+                <p></p>
+                <List strongIos outlineIos>
+                    <ListItem
+                        title="VIP 💎"
+                        text="訂單 98 折"
+                    />
+                    <ListItem
+                        title="VVIP 💎💎"
+                        text="訂單 95 折，且享有生日贈禮"
+                    />
+                    <ListItem
+                        title="VVVIP 💎💎💎"
+                        text="訂單 92 折，且享有生日贈禮"
+                    />
+                </List>
+            </Block>
 
         </Page>
     )
