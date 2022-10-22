@@ -41,7 +41,7 @@ export default function Order({place: {id, name, img, items}}) {
     function decreaseItem(itemID){
         let newOrder = order;
         let item_to_mod = newOrder.item.findIndex((it) => it.id == itemID)
-        newOrder.item[item_to_mod].amount += 1;
+        newOrder.item[item_to_mod].amount -= 1;
         setOrder(newOrder)
     }
     function getItemAmount(itemID){
@@ -95,6 +95,9 @@ export default function Order({place: {id, name, img, items}}) {
             </List>
 
             <Button onClick={() => setCartPopUp(true)}>檢視您的購物車</Button>
+            <Button onClick={() => {
+                localStorage.setItem('order', JSON.stringify(order))
+            }}>送出訂單</Button>
 
             <Popup opened={cartPopUp} onBackdropClick={() => setCartPopUp(false)}>
                 <Page>
