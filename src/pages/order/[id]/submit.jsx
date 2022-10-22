@@ -29,6 +29,7 @@ export default function OrderSubmit({place: {id}}) {
                     size={256}
                     style={{ height: "auto", maxWidth: "100%", width: "100%" }}
                     value={JSON.stringify({
+                        type: "payment",
                         store: id,
                         order
                     })}

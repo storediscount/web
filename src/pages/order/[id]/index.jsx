@@ -92,7 +92,6 @@ export default function Order({place: {id, name, img, items}}) {
             </Block>
             <Block>
                 <Button onClick={() => {
-                    calcOrder();
                     localStorage.setItem('order', JSON.stringify(order))
                     router.push(`/order/${id}/submit`)
                 }}>送出訂單</Button>

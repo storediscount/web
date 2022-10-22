@@ -1,11 +1,48 @@
 import Head from "next/head";
-import {BlockTitle, List, ListItem, Navbar, Page} from "konsta/react";
+import {Block, BlockTitle, Button, Link, List, ListItem, Navbar, Page, Sheet, Toolbar} from "konsta/react";
 import Html5QrcodePlugin from "../../components/QRCodeScanner";
 import titleFormatter from "../../helpers/titleFormatter";
+import {useState} from "react";
+import stores from "../../assets/data.json";
+import Swal from "sweetalert2";
+import {useRouter} from "next/router";
 
 export default function WalletDetail() {
+    const [sheetOpened, setSheetOpened] = useState(false);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [order, setOrder] = useState([]);
+    const [store, setStore] = useState(1);
+    const [scanned, setScanned] = useState(false);
+    const router = useRouter()
     const result = (res) => {
-        alert(JSON.stringify(res))
+        const data = JSON.parse(res);
+        switch (data.type) {
+            case "payment":
+                if (scanned) break
+                setScanned(true);
+                const {store, order} = data;
+                console.log(store, order)
+                if (order)
+                    setOrder(order);
+                if (store) {
+                    setStore(store);
+                    console.log("check" + store.toString())
+                }
+                const items = stores.find((place) => place.id === store).items;
+                setTotalPrice(order.reduce((acc, cur) => acc + items.find(item => item.id === cur.id).price * cur.amount, 0));
+                setSheetOpened(true);
+                break
+        }
+    }
+    const pay = () => {
+        setSheetOpened(false)
+        Swal.fire({
+            icon: "success",
+            title: "支付狀態",
+            text: "支付成功",
+        }).then(() => {
+            router.replace('/me')
+        })
     }
     return (
         <Page>
@@ -21,6 +58,39 @@ export default function WalletDetail() {
                 qrbox={250}
                 disableFlip={false}
                 qrCodeSuccessCallback={result}/>
+
+            <Sheet
+                className="pb-safe w-full"
+                opened={sheetOpened}
+                onBackdropClick={() => setSheetOpened(false)}
+            >
+                <Toolbar top>
+                    <div className="left"/>
+                    <div className="right">
+                        <Link toolbar onClick={() => setSheetOpened(false)}>
+                            完成
+                        </Link>
+                    </div>
+                </Toolbar>
+                <Block>
+                    <p>
+                        您確定要支付？
+                    </p>
+                    <div className={"flex flex-col"}>
+                        {order.map((o) => {
+                            return (
+                                <div className={"flex flex-row justify-between"}>
+                                    <div>{stores.find((place) => place.id.toString() === store.toString()).items.find(i => i.id.toString() === o.id.toString()).name}</div>
+                                    <div>{stores.find((place) => place.id.toString() === store.toString()).items.find(i => i.id.toString() === o.id.toString()).price} x {o.amount}</div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className="mt-4">
+                        <Button onClick={pay}>支付 ${totalPrice}</Button>
+                    </div>
+                </Block>
+            </Sheet>
         </Page>
     )
 }
