@@ -54,7 +54,6 @@ export default function Home() {
                                     test
                                 </Popup>
                             </Marker>
-                            <Polyline positions={data.map((item) => [item.lat, item.lng])}/>
                             {data.map((place) => (
                                 <Marker position={[place.lat, place.lng]}>
                                     <Popup>
