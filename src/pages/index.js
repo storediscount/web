@@ -93,7 +93,7 @@ export default function Home() {
                     <div className="left"/>
                     <div className="right">
                         <Link toolbar onClick={() => setSheetOpened(false)}>
-                            Done
+                            完成
                         </Link>
                     </div>
                 </Toolbar>
