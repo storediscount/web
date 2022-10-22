@@ -1,11 +1,13 @@
 import Head from "next/head";
 import titleFormatter from "../../../helpers/titleFormatter";
-import {Block, Navbar, Page, Link, BlockTitle} from "konsta/react";
+import {Block, Navbar, Page, Link, BlockTitle, List, ListItem} from "konsta/react";
 import Map from "../../../components/Map";
 import styles from "../../../../styles/Home.module.css";
 import data from "../../../assets/data.json";
+import transactionRecord from "../../../assets/transaction_record_dummy_data.json"
 import {ChevronLeftIcon, HandThumbDownIcon, HandThumbUpIcon} from "@heroicons/react/24/outline";
 import {useRouter} from "next/router";
+import DetailRecord from "../../../components/DetailRecord";
 import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 
 export default function Store({place: {id, lat, lng, name}}) {
@@ -51,9 +53,16 @@ export default function Store({place: {id, lat, lng, name}}) {
             </Block>
 
             <BlockTitle>消費紀錄</BlockTitle>
-            <Block>
-                <UserStoreInvoiceList store={id} user={"user"}/>
-            </Block>
+            <List strongIos outlineIos>
+                {transactionRecord.filter((record) => record.storeId === id).map((record) => (
+                    <ListItem
+                        key={record.id}
+                        text={
+                            <DetailRecord items={record.items} total={record.total} storeId={record.storeId} router={router}/>
+                        }
+                    />
+                ))}
+            </List>
         </Page>
     )
 }
