@@ -15,8 +15,11 @@ import {
 import {useRouter} from "next/router";
 import DetailRecord from "../../../components/DetailRecord";
 import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
+import Image from "next/image";
+import vip from "../../../assets/vip.json"
+// import {BlockColors} from "konsta/shared/esm/colors/BlockColors";
 
-export default function Store({place: {id, lat, lng, name}}) {
+export default function Store({place: {id, lat, lng, name, img}}) {
     const router = useRouter()
     return (
         <Page>
@@ -27,7 +30,7 @@ export default function Store({place: {id, lat, lng, name}}) {
             <Navbar title={titleFormatter(name)}
                     left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon
                         className={"h-4 w-4"}/>返回</Link>}/>
-            <Block>
+            {/*<Block>*/}
                 <Map className={styles.homeMap} center={[lat, lng]} zoom={20}>
                     {({TileLayer, Marker, Popup}) => (
                         <>
@@ -43,7 +46,10 @@ export default function Store({place: {id, lat, lng, name}}) {
                         </>
                     )}
                 </Map>
-            </Block>
+            {/*</Block>*/}
+            {/*<Block strong inset outline>*/}
+            {/*    <img src={"/images/store/"+img}/>*/}
+            {/*</Block>*/}
 
             <BlockTitle>商家資訊</BlockTitle>
             <Block strong>
@@ -56,9 +62,6 @@ export default function Store({place: {id, lat, lng, name}}) {
                 </div>
                 <p>
                     <strong>商家名稱:</strong> {name}
-                </p>
-                <p>
-                    <strong>提供優惠:</strong> 沒有啦
                 </p>
             </Block>
 
@@ -74,6 +77,27 @@ export default function Store({place: {id, lat, lng, name}}) {
                     />
                 ))}
             </List>
+
+            <BlockTitle>成為熟客</BlockTitle>
+            <Block>
+                <p>{"您現在的熟客等級："+vip[0][id]}</p>
+                <p></p>
+                <List strongIos outlineIos>
+                    <ListItem
+                        title="VIP 💎"
+                        text="訂單 98 折"
+                    />
+                    <ListItem
+                        title="VVIP 💎💎"
+                        text="訂單 95 折，且享有生日贈禮"
+                    />
+                    <ListItem
+                        title="VVVIP 💎💎💎"
+                        text="訂單 92 折，且享有生日贈禮"
+                    />
+                </List>
+            </Block>
+
         </Page>
     )
 }
