@@ -73,8 +73,8 @@ export default function Register() {
                         className={"h-4 w-4"}/>返回</Link>}/>
             <div className="sm:mx-auto sm:w-full sm:max-w-md mt-8">
                 <img
-                    className="mx-auto h-12 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    className="mx-auto h-24 w-auto"
+                    src="/logo.png"
                     alt="Your Company"
                 />
                 <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">註冊帳戶</h2>
