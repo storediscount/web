@@ -38,8 +38,8 @@ export default function Index() {
     const [currentStoreVerified, setCurrentStoreVerified] = useState(false)
 
     useEffect(() => {
-        const token = localStorage?.getItem('token')
-        const user = localStorage?.getItem('user')
+        //const token = localStorage?.getItem('token')
+        //const user = localStorage?.getItem('user')
         if (token) {
             setLogined(true)
             setUser(JSON.parse(user))

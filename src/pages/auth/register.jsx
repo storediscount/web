@@ -27,8 +27,8 @@ export default function Register() {
             password,
             name
         }).then((res) => {
-            localStorage?.setItem('token', res.data.token)
-            localStorage?.setItem('user', JSON.stringify(res.data.user))
+            //localStorage?.setItem('token', res.data.token)
+            //localStorage?.setItem('user', JSON.stringify(res.data.user))
 
             Swal.fire({
                 icon: 'success',
@@ -46,8 +46,8 @@ export default function Register() {
             name,
             storeName
         }).then((res) => {
-            localStorage?.setItem('token', res.data.token)
-            localStorage?.setItem('user', JSON.stringify(res.data.user))
+            //localStorage?.setItem('token', res.data.token)
+            //localStorage?.setItem('user', JSON.stringify(res.data.user))
 
             Swal.fire({
                 icon: 'success',
