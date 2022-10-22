@@ -12,9 +12,7 @@ import {Button} from "konsta/react";
 import {useRef, useState} from "react";
 import {useRouter} from "next/router";
 import {CurrencyDollarIcon, HomeIcon, UserCircleIcon} from "@heroicons/react/24/outline";
-import {HomeIcon as HomeSolidIcon} from "@heroicons/react/24/solid";
 import {Popover} from "konsta/react";
-import {PlusIcon} from "@heroicons/react/24/solid";
 import {Tabbar, TabbarLink} from "konsta/react";
 import {Icon} from "konsta/react";
 
@@ -127,9 +125,9 @@ export default function Home() {
                 ></TabbarLink>
                 <TabbarLink tabbar
                             className={"flex flex-col items-center justify-center"}
-                            onClick={() => router.pathname.startsWith("/me")}
+                            onClick={() => router.pathname === "/me"}
                             icon={<Icon ios={<UserCircleIcon/>} className={"w-6 h-6"}/>}
-                            active={router.pathname.startsWith("/me")}
+                            active={router.pathname === "/me"}
                             label={isTabbarLabels && "我的"}
                 ></TabbarLink>
                 <Popover
