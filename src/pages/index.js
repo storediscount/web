@@ -7,10 +7,21 @@ import {Block, Link, Navbar, Page} from "konsta/react";
 import {BlockTitle, List, ListItem} from "konsta/react";
 import data from "../assets/data.json"
 import titleFormatter from "../helpers/titleFormatter";
+import {Sheet, Toolbar} from "konsta/react";
+import {Button} from "konsta/react";
+import {useState} from "react";
+import {useRouter} from "next/router";
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
 export default function Home() {
+    const [sheetOpened, setSheetOpened] = useState(false);
+    const [currentSheetId, setCurrentSheetId] = useState("1");
+    const router = useRouter()
+    const openSheet = (id) => {
+        setSheetOpened(true)
+        setCurrentSheetId(id)
+    }
     return (
         <Page>
             <Head>
@@ -35,7 +46,7 @@ export default function Home() {
                             {data.map((place) => (
                                 <Marker position={[place.lat, place.lng]}>
                                     <Popup>
-                                        <Link href={"/store/" + place.id}>{place.name}</Link>
+                                        <Link onClick={() => openSheet(place.id)}>{place.name}</Link>
                                     </Popup>
                                 </Marker>
                             ))}
@@ -54,6 +65,31 @@ export default function Home() {
                 <ListItem href="/wallet/detail" title="交易明細"/>
                 <ListItem href="/wallet/pay" title="支付"/>
             </List>
+
+
+            <Sheet
+                className="pb-safe w-full"
+                opened={sheetOpened}
+                backdrop={true}
+                onBackdropClick={() => setSheetOpened(false)}
+            >
+                <Toolbar top>
+                    <div className="left" />
+                    <div className="right">
+                        <Link toolbar onClick={() => setSheetOpened(false)}>
+                            Done
+                        </Link>
+                    </div>
+                </Toolbar>
+                <Block>
+                    <div className={"my-4"}>
+                        商家名稱： {data.find((item) => item.id === currentSheetId)?.name}
+                    </div>
+                    <div className="mt-4">
+                        <Button onClick={() => router.push(`/store/${currentSheetId}`)} className={"w-full"}>查看更多</Button>
+                    </div>
+                </Block>
+            </Sheet>
         </Page>
     )
 }
