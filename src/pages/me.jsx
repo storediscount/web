@@ -28,7 +28,7 @@ export default function Me() {
             setLogined(true)
             setUser(JSON.parse(user))
         }
-    }, [user, router, logined])
+    }, [router, logined])
 
     return (
         <Page>
@@ -59,7 +59,7 @@ export default function Me() {
                     <div className={`${!logined && "hidden"}`}>
 
                         <Block>
-                            餘額： 0點
+                            餘額： 1000點
                         </Block>
                         <List>
                             <ListItem
