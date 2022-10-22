@@ -31,6 +31,6 @@ export default function AchievementPage() {
                     </Card>
                 ))}
             </Block>
-        </Page>
+        </Page>  
     )
 }
