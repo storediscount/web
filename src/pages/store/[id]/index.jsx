@@ -1,13 +1,14 @@
 import Head from "next/head";
 import titleFormatter from "../../../helpers/titleFormatter";
-import {Block, Navbar, Page, Link} from "konsta/react";
+import {Block, Navbar, Page, Link, BlockTitle} from "konsta/react";
 import Map from "../../../components/Map";
 import styles from "../../../../styles/Home.module.css";
 import data from "../../../assets/data.json";
 import {ChevronLeftIcon, HandThumbDownIcon, HandThumbUpIcon} from "@heroicons/react/24/outline";
 import {useRouter} from "next/router";
+import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 
-export default function Store({place: {lat, lng, name}}) {
+export default function Store({place: {id, lat, lng, name}}) {
     const router = useRouter()
     return (
         <Page>
@@ -35,6 +36,7 @@ export default function Store({place: {lat, lng, name}}) {
                 </Map>
             </Block>
 
+            <BlockTitle>商家資訊</BlockTitle>
             <Block strong>
                 <p>
                     <strong>商家名稱:</strong> {name}
@@ -46,6 +48,11 @@ export default function Store({place: {lat, lng, name}}) {
                 <p>
                     <strong>提供優惠:</strong> 沒有啦
                 </p>
+            </Block>
+
+            <BlockTitle>消費紀錄</BlockTitle>
+            <Block>
+                <UserStoreInvoiceList store={id} user={"user"}/>
             </Block>
         </Page>
     )
