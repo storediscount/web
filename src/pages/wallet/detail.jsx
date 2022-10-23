@@ -37,7 +37,7 @@ export default function WalletDetail() {
                                 <Link className="text-xl" onClick={() => router.push(`/store/${record.storeId}`)}>
                                     {data.find((store) => store.id === record.storeId).name}
                                 </Link>
-                                <DetailRecord items={record.items} total={record.total} storeId={record.storeId} router={router}/>
+                                <DetailRecord items={record.items} total={record.total} storeId={record.storeId} discount={record.discountValue}/>
                             </>
                         }
                     />

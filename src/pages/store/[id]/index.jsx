@@ -110,7 +110,7 @@ export default function Store({place: {id, lat, lng, name, img, vip}}) {
                         key={record.id}
                         text={
                             <DetailRecord items={record.items} total={record.total} storeId={record.storeId}
-                                          router={router}/>
+                                        discount={record.discountValue}/>
                         }
                     />
                 ))}
