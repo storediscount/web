@@ -72,7 +72,7 @@ export default function WalletDetail() {
                     title: "成就解鎖",
                     text: "恭喜你解鎖「吃我一記金錢攻擊」"
                 })
-                router.replace('/store/' + store.toString())
+                router.replace('/')
             })
         }, 2000)
         // build 2
