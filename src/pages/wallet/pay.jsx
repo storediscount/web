@@ -42,20 +42,20 @@ export default function WalletDetail() {
     const calcDiscount = (_checkedCoupon) => {
         // value first, percentage second
         let percentage = 1.0, value = 0
-        for(let i=0;i<coupons.length;i++){
-            if(_checkedCoupon[i]){
+        for (let i = 0; i < coupons.length; i++) {
+            if (_checkedCoupon[i]) {
                 percentage *= parseFloat(coupons[i].discountPercentage)
                 value += parseInt(coupons[i].discountValue)
             }
         }
-        setFinalPrice(Math.floor(Math.max((totalPrice-value)*percentage),0))
+        setFinalPrice(Math.floor(Math.max((totalPrice - value) * percentage), 0))
     }
-    const handleCheckedCouponChange = (e, id) =>{
+    const handleCheckedCouponChange = (e, id) => {
         let _checkedCoupon = [...checkedCoupon]
-        _checkedCoupon[id-1] = e.target.checked
+        _checkedCoupon[id - 1] = e.target.checked
         setCheckedCoupon(_checkedCoupon)
         calcDiscount(_checkedCoupon)
-    } 
+    }
     const pay = () => {
         setSheetOpened(false)
         Swal.fire({
@@ -63,7 +63,7 @@ export default function WalletDetail() {
             title: "支付狀態",
             text: "支付成功",
         }).then(() => {
-            router.replace('/store/'+store.toString())
+            router.replace('/store/' + store.toString())
         })
         // build 2
     }
@@ -91,15 +91,15 @@ export default function WalletDetail() {
                     <div className="left"/>
                     <div className="right">
                         <Link toolbar onClick={() => setSheetOpened(false)}>
-                            完成
+                            取消
                         </Link>
                     </div>
                 </Toolbar>
                 <Block>
-                    <p>
+                    <div className={"text-2xl -mt-4 border-b pb-1"}>
                         您確定要支付？
-                    </p>
-                    <div className={"flex flex-col"}>
+                    </div>
+                    <div className={"flex flex-col mt-2"}>
                         {order.map((o) => {
                             return (
                                 <div className={"flex flex-row justify-between"}>
@@ -109,26 +109,27 @@ export default function WalletDetail() {
                             )
                         })}
                     </div>
-                    <div className={"flex flex-col gap-1"}>
+                    <div className={"flex flex-col gap-1 mt-2 border-y py-2"}>
                         {coupons.map((coupon) => (
                             <div className={"flex flex-row justify-between"} key={coupon.id}>
                                 <div>{coupon.name}</div>
                                 <Checkbox
-                                    checked={checkedCoupon[parseInt(coupon.id)-1]}
-                                    onChange={(e) => handleCheckedCouponChange(e,parseInt(coupon.id))}
+                                    checked={checkedCoupon[parseInt(coupon.id) - 1]}
+                                    onChange={(e) => handleCheckedCouponChange(e, parseInt(coupon.id))}
                                 />
                             </div>
                         ))}
                     </div>
-                    <div className={"flex flex-col"}>
+                    <div className={"flex flex-col bg-gray-200 rounded-t px-2 py-2 text-center mt-4"}>
                         {"熟客優惠："
                             + stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].name
-                            +"，"
+                            + "，"
                             + stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].description
                         }
                     </div>
-                    <div className="mt-4">
-                        <Button onClick={pay}>支付 ${Math.floor(finalPrice*stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].discount_ratio)}</Button>
+                    <div className="">
+                        <Button onClick={pay}>支付
+                            ${Math.floor(finalPrice * stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].discount_ratio)}</Button>
                     </div>
                 </Block>
             </Sheet>
