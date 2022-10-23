@@ -127,7 +127,7 @@ export default function WalletDetail() {
                         }
                     </div>
                     <div className="mt-4">
-                        <Button onClick={pay}>支付 ${finalPrice*stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].discount_ratio}</Button>
+                        <Button onClick={pay}>支付 ${Math.floor(finalPrice*stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].discount_ratio)}</Button>
                     </div>
                 </Block>
             </Sheet>
