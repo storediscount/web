@@ -103,7 +103,7 @@ export default function Me() {
                                     link
                                 ></ListItem>
                                 <ListItem
-                                    className={"bgㄛˇ-gray-200"}
+                                    className={"bg-gray-200"}
                                     href={"/wallet/coupon"}
                                     title={"我的優惠券"}
                                     media={<BanknotesIcon className={"h-6 w-6"}/>}

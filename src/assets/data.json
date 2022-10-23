@@ -26,18 +26,18 @@
     [
       {
         "name": "VIP \uD83D\uDC8E",
-        "description": "結帳享 92 折優惠",
-        "discount_ratio": 0.92
-      },
-      {
-        "name": "VVIP \uD83D\uDC8E\uD83D\uDC8E",
         "description": "結帳享 95 折優惠",
         "discount_ratio": 0.95
       },
       {
+        "name": "VVIP \uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 92 折優惠",
+        "discount_ratio": 0.92
+      },
+      {
         "name": "VVVIP \uD83D\uDC8E\uD83D\uDC8E\uD83D\uDC8E",
-        "description": "結帳享 95 折優惠，以及生日贈禮",
-        "discount_ratio": 0.95
+        "description": "結帳享 91 折優惠，以及生日贈禮",
+        "discount_ratio": 0.91
       }
     ]
   },
@@ -160,18 +160,18 @@
     [
       {
         "name": "開源社 VIP \uD83D\uDC8E",
-        "description": "結帳享 92 折優惠",
-        "discount_ratio": 0.92
-      },
-      {
-        "name": "開源社VVIP \uD83D\uDC8E\uD83D\uDC8E",
         "description": "結帳享 95 折優惠",
         "discount_ratio": 0.95
       },
       {
+        "name": "開源社VVIP \uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 92 折優惠",
+        "discount_ratio": 0.92
+      },
+      {
         "name": "開源社 VVVIP \uD83D\uDC8E\uD83D\uDC8E\uD83D\uDC8E",
-        "description": "結帳享 95 折優惠，以及生日贈禮",
-        "discount_ratio": 0.95
+        "description": "結帳享 91 折優惠，以及生日贈禮",
+        "discount_ratio": 0.91
       }
     ]
   },

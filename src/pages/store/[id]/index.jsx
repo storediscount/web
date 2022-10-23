@@ -26,7 +26,7 @@ export default function Store({place: {id, lat, lng, name, img, vip}}) {
     const [isUpvoted, setUpvoted] = useState(false)
     const [isDevoted, setDevoted] = useState(false)
     const [initUpvoted, setInitUpvoted] = useState(Math.floor(Math.random() * 50) + 25)
-    const [initDevoted, setInitDevoted] = useState(Math.floor(Math.random() * 50))
+    const [initDevoted, setInitDevoted] = useState(Math.floor(Math.random() * 25))
 
     return (
         <Page>
