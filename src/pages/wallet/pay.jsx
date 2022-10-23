@@ -65,7 +65,7 @@ export default function WalletDetail() {
         }).then(() => {
             router.replace('/store/'+store.toString())
         })
-        // build
+        // build 2
     }
     return (
         <Page>
