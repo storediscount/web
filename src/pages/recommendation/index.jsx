@@ -1,5 +1,4 @@
 import Head from "next/head";
-import data from "../../assets/data.json"
 import titleFormatter from "../../helpers/titleFormatter";
 import {ChevronLeftIcon} from "@heroicons/react/24/outline";
 import {BlockTitle, Card, Link, List, Navbar, Page} from "konsta/react";
@@ -46,7 +45,7 @@ export default function RecommendationList() {
             <Card>
                 <List strongIos outlineIos>
                     {filtered_recommendations.map((recommendation) => (
-                        <div className={"bg-white px-4 my-4 border-b border-gray-200"}>
+                        <div className={"bg-white px-4 my-4 border-b border-gray-200"} onClick={()=>router.push('/recommendation/' + recommendation.id)}>
                             <div>
                                 <div className={"text-lg font-bold"}>{recommendation.name}</div>
                                 <div className={"text-lg "}>景點數量： {recommendation.stores.length}</div>
