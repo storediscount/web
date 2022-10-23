@@ -1,4 +1,4 @@
-export default function DetailRecord({items, total}) {
+export default function DetailRecord({items, total, discount}) {
     return(
         <div className={"flex flex-col"}>
             {items.map((item) => (
@@ -11,7 +11,15 @@ export default function DetailRecord({items, total}) {
                     </div>
                 </div>
             ))}
-            <div className="text-xl">Total: ${total}</div>
+            <div className={"flex flex-row justify-between"}>
+                    <div>
+                        折扣
+                    </div>
+                    <div>
+                        -{discount}
+                    </div>
+                </div>
+            <div className="text-xl">Total: ${total-discount}</div>
         </div>
     )
 }
