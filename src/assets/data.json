@@ -21,6 +21,24 @@
         "img": "ouo.png",
         "price": 199
       }
+    ],
+    "vip":
+    [
+      {
+        "name": "VIP \uD83D\uDC8E",
+        "description": "結帳享 92 折優惠",
+        "discount_ratio": 0.92
+      },
+      {
+        "name": "VVIP \uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠",
+        "discount_ratio": 0.95
+      },
+      {
+        "name": "VVVIP \uD83D\uDC8E\uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠，以及生日贈禮",
+        "discount_ratio": 0.95
+      }
     ]
   },
   {
@@ -45,6 +63,24 @@
         "img": "ouo.png",
         "price": 49
       }
+    ],
+    "vip":
+    [
+      {
+        "name": "VIP \uD83D\uDC8E",
+        "description": "結帳享 92 折優惠",
+        "discount_ratio": 0.92
+      },
+      {
+        "name": "VVIP \uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠",
+        "discount_ratio": 0.95
+      },
+      {
+        "name": "VVVIP \uD83D\uDC8E\uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠，以及生日贈禮",
+        "discount_ratio": 0.95
+      }
     ]
   },
   {
@@ -68,6 +104,24 @@
         "description": "ouo",
         "img": "ouo.png",
         "price": 100
+      }
+    ],
+    "vip":
+    [
+      {
+        "name": "VIP \uD83D\uDC8E",
+        "description": "結帳享 92 折優惠",
+        "discount_ratio": 0.92
+      },
+      {
+        "name": "VVIP \uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠",
+        "discount_ratio": 0.95
+      },
+      {
+        "name": "VVVIP \uD83D\uDC8E\uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠，以及生日贈禮",
+        "discount_ratio": 0.95
       }
     ]
   },
@@ -94,6 +148,24 @@
         "img": "ouo.png",
         "price": 999
       }
+    ],
+    "vip":
+    [
+      {
+        "name": "開源社 VIP \uD83D\uDC8E",
+        "description": "結帳享 92 折優惠",
+        "discount_ratio": 0.92
+      },
+      {
+        "name": "開源社VVIP \uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠",
+        "discount_ratio": 0.95
+      },
+      {
+        "name": "開源社 VVVIP \uD83D\uDC8E\uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠，以及生日贈禮",
+        "discount_ratio": 0.95
+      }
     ]
   },
   {
@@ -119,6 +191,24 @@
         "img": "ouo.png",
         "price": 139
       }
+    ],
+    "vip":
+    [
+      {
+        "name": "VIP \uD83D\uDC8E",
+        "description": "結帳享 92 折優惠",
+        "discount_ratio": 0.92
+      },
+      {
+        "name": "VVIP \uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠",
+        "discount_ratio": 0.95
+      },
+      {
+        "name": "VVVIP \uD83D\uDC8E\uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠，以及生日贈禮",
+        "discount_ratio": 0.95
+      }
     ]
   },
   {
@@ -128,8 +218,7 @@
     "name": "立晉傳統豆花",
     "img": "store_LZH_douhua.jpg",
     "subtitle": "傳統點心",
-    "items":
-    [
+    "items": [
       {
         "id": 1,
         "name": "鴉片粉圓",
@@ -143,6 +232,24 @@
         "description": "ouo",
         "img": "ouo.png",
         "price": 20
+      }
+    ],
+    "vip":
+    [
+      {
+        "name": "VIP \uD83D\uDC8E",
+        "description": "結帳享 92 折優惠",
+        "discount_ratio": 0.92
+      },
+      {
+        "name": "VVIP \uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠",
+        "discount_ratio": 0.95
+      },
+      {
+        "name": "VVVIP \uD83D\uDC8E\uD83D\uDC8E\uD83D\uDC8E",
+        "description": "結帳享 95 折優惠，以及生日贈禮",
+        "discount_ratio": 0.95
       }
     ]
   }

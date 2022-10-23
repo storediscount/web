@@ -6,6 +6,7 @@ import {useState} from "react";
 import stores from "../../assets/data.json";
 import Swal from "sweetalert2";
 import {useRouter} from "next/router";
+import customerLevel from "../../assets/customer_level.json";
 
 export default function WalletDetail() {
     const [sheetOpened, setSheetOpened] = useState(false);
@@ -86,8 +87,15 @@ export default function WalletDetail() {
                             )
                         })}
                     </div>
+                    <div className={"flex flex-col"}>
+                        {"熟客優惠："
+                            + stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].name
+                            +"，"
+                            + stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].description
+                        }
+                    </div>
                     <div className="mt-4">
-                        <Button onClick={pay}>支付 ${totalPrice}</Button>
+                        <Button onClick={pay}>支付 ${totalPrice*stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].discount_ratio}</Button>
                     </div>
                 </Block>
             </Sheet>
