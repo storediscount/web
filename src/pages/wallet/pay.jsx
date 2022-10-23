@@ -67,6 +67,11 @@ export default function WalletDetail() {
                 text: "支付成功",
             }).then(() => {
                 setNotPaying(true)
+                Swal.fire({
+                    iconHtml: '<img src="/images/badge/吃我一記金錢攻擊.png">',
+                    title: "成就解鎖",
+                    text: "恭喜你解鎖「吃我一記金錢攻擊」"
+                })
                 router.replace('/store/' + store.toString())
             })
         }, 2000)

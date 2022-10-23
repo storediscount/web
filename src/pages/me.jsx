@@ -79,7 +79,7 @@ export default function Me() {
                                     title={"餘額"}
                                     media={<CurrencyDollarIcon className={"h-6 w-6"}/>}
                                     link
-                                    after={"1000"}
+                                    after={"743"}
                                 ></ListItem>
                                 <ListItem
                                     className={"bg-gray-200"}
