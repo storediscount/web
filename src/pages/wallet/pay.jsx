@@ -63,7 +63,7 @@ export default function WalletDetail() {
             title: "支付狀態",
             text: "支付成功",
         }).then(() => {
-            router.replace('/me')
+            router.replace('/store/'+store.toString())
         })
     }
     return (

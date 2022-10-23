@@ -17,10 +17,17 @@ import DetailRecord from "../../../components/DetailRecord";
 import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 import Image from "next/image";
 import customerLevel from "../../../assets/customer_level.json"
+import {useState} from "react";
+import {flushSync} from "react-dom";
 // import {BlockColors} from "konsta/shared/esm/colors/BlockColors";
 
 export default function Store({place: {id, lat, lng, name, img, vip}}) {
     const router = useRouter()
+    const [isUpvoted, setUpvoted] = useState(false)
+    const [isDevoted, setDevoted] = useState(false)
+    const [initUpvoted, setInitUpvoted] = useState(Math.floor(Math.random() * 50) + 25)
+    const [initDevoted, setInitDevoted] = useState(Math.floor(Math.random() * 50))
+
     return (
         <Page>
             <Head>
@@ -54,13 +61,28 @@ export default function Store({place: {id, lat, lng, name, img, vip}}) {
             <BlockTitle>商家資訊</BlockTitle>
             <Block strong>
                 <div className={"flex flex-row items-center justify-between"}>
-                    <div className={"flex flex-row items-center"}>
-                        <HandThumbUpIcon className={"h-4 w-4"}/> {Math.floor(Math.random() * 50) + 25} &nbsp;
-                        <HandThumbDownIcon className={"h-4 w-4"}/> {Math.floor(Math.random() * 25)}
+                    <div className={"p-2 flex flex-row items-center"}>
+                        <HandThumbUpIcon
+
+                            className={`h-8 w-8 ${isUpvoted && 'text-red-300'}`}
+                            onClick={() => {
+                                setDevoted(false)
+                                setUpvoted(!isUpvoted)
+                            }}
+                        />
+                        {initUpvoted + isUpvoted} &nbsp;
+                        <HandThumbDownIcon
+                            className={`h-8 w-8 ${isDevoted && 'text-red-300'}`}
+                            onClick={() => {
+                                setUpvoted(false)
+                                setDevoted(!isDevoted)
+                            }}
+                        />
+                        {initDevoted + isDevoted}
                     </div>
                     <BookmarkIcon className={"h-6 w-6 cursor-pointer"}></BookmarkIcon>
                 </div>
-                <p>
+                <p className='p-2'>
                     <strong>商家名稱:</strong> {name}
                 </p>
             </Block>
