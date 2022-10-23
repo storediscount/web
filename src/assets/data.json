@@ -137,16 +137,23 @@
       {
         "id": 1,
         "name": "雞排",
-        "description": "ouo",
-        "img": "ouo.png",
-        "price": 199
+        "description": "香酥好吃的雞排",
+        "img": "jipai.jpeg",
+        "price": 55
       },
       {
         "id": 2,
-        "name": "豬血糕",
-        "description": "ouo",
-        "img": "ouo.png",
-        "price": 999
+        "name": "四季豆",
+        "description": "吃肉配菜幫助消化",
+        "img": "sijidou.jpeg",
+        "price": 20
+      },
+      {
+        "id": 3,
+        "name": "臺南大扁",
+        "description": "土生土長的臺南又大又扁的甜不辣",
+        "img": "dabian.jpg",
+        "price": 20
       }
     ],
     "vip":
