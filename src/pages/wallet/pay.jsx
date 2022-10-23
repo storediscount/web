@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import {useRouter} from "next/router";
 import customerLevel from "../../assets/customer_level.json";
 import {Preloader} from "konsta/react";
+import {ChevronLeftIcon} from "@heroicons/react/24/outline";
 
 export default function WalletDetail() {
     const [sheetOpened, setSheetOpened] = useState(false);
@@ -83,7 +84,10 @@ export default function WalletDetail() {
                 <title>{titleFormatter("掃碼支付")}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <Navbar title={titleFormatter("掃碼支付")}/>
+            <Navbar
+                title={titleFormatter("掃碼支付")}
+                left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon className={"h-4 w-4"}/>返回</Link>}
+            />
 
             <BlockTitle>掃碼支付</BlockTitle>
             <Html5QrcodePlugin
