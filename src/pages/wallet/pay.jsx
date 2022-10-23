@@ -8,6 +8,7 @@ import coupons from "../../assets/coupon_ticket.json"
 import Swal from "sweetalert2";
 import {useRouter} from "next/router";
 import customerLevel from "../../assets/customer_level.json";
+import {Preloader} from "konsta/react";
 
 export default function WalletDetail() {
     const [sheetOpened, setSheetOpened] = useState(false);
@@ -17,6 +18,7 @@ export default function WalletDetail() {
     const [store, setStore] = useState(1);
     const [scanned, setScanned] = useState(false);
     const [checkedCoupon, setCheckedCoupon] = useState((new Array(coupons.length)).fill(false))
+    const [notpaying, setNotPaying] = useState(true);
     const router = useRouter()
     const result = (res) => {
         const data = JSON.parse(res);
@@ -25,7 +27,6 @@ export default function WalletDetail() {
                 if (scanned) break
                 setScanned(true);
                 const {store, order} = data;
-                console.log(store, order)
                 if (order)
                     setOrder(order);
                 if (store) {
@@ -57,14 +58,18 @@ export default function WalletDetail() {
         calcDiscount(_checkedCoupon)
     }
     const pay = () => {
-        setSheetOpened(false)
-        Swal.fire({
-            icon: "success",
-            title: "支付狀態",
-            text: "支付成功",
-        }).then(() => {
-            router.replace('/store/' + store.toString())
-        })
+        setNotPaying(false)
+        setTimeout(()=>{
+            setSheetOpened(false)
+            Swal.fire({
+                icon: "success",
+                title: "支付狀態",
+                text: "支付成功",
+            }).then(() => {
+                setNotPaying(true)
+                router.replace('/store/' + store.toString())
+            })
+        }, 2000)
         // build 2
     }
     return (
@@ -103,8 +108,8 @@ export default function WalletDetail() {
                         {order.map((o) => {
                             return (
                                 <div className={"flex flex-row justify-between"}>
-                                    <div>{stores.find((place) => place.id.toString() === store.toString()).items.find(i => i.id.toString() === o.id.toString()).name}</div>
-                                    <div>{stores.find((place) => place.id.toString() === store.toString()).items.find(i => i.id.toString() === o.id.toString()).price} x {o.amount}</div>
+                                    <div>{stores.find((place) => place.id.toString() === store.toString())?.items?.find(i => i.id.toString() === o.id.toString())?.name}</div>
+                                    <div>{stores.find((place) => place.id.toString() === store.toString())?.items?.find(i => i.id.toString() === o.id.toString())?.price} x {o.amount}</div>
                                 </div>
                             )
                         })}
@@ -133,6 +138,10 @@ export default function WalletDetail() {
                     </div>
                 </Block>
             </Sheet>
+            <div className={`absolute top-0 bottom-0 left-0 right-0 flex flex-col gap-2 justify-center items-center bg-gray-100 opacity-90 ${notpaying && 'hidden'}`}>
+                <Preloader size="w-8 h-8" />
+                <div>支付中，請勿關閉頁面避免支付失敗</div>
+            </div>
         </Page>
     )
 }      
