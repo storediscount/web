@@ -5,6 +5,15 @@ import {ChevronLeftIcon} from "@heroicons/react/24/outline";
 import {useEffect, useState} from "react";
 import titleFormatter from "../helpers/titleFormatter";
 import Swal from "sweetalert2";
+import {Badge} from "konsta/react";
+import {
+    BanknotesIcon,
+    BookmarkIcon,
+    CheckBadgeIcon,
+    CurrencyDollarIcon,
+    DocumentIcon,
+    PaperClipIcon
+} from "@heroicons/react/24/solid";
 
 export default function Me() {
     const router = useRouter()
@@ -42,7 +51,7 @@ export default function Me() {
             <div className={"mt-8"}>
                 <Card>
                     <div className={"flex flex-col"}>
-                        <img src={'/logo.png'} alt={'logo'}/>
+                        <Link href={"/"}><img src={'/logo.png'} alt={'logo'}/></Link>
                         <div className={`flex flex-col gap-2 w-full ${logined && 'hidden'}`}>
                             <Button onClick={() => router.push("/auth/login")}>登入</Button>
                             <Button onClick={() => router.push("/auth/register")}>註冊</Button>
@@ -63,30 +72,42 @@ export default function Me() {
                         </div>
 
                         <div className={`${!logined && "hidden"}`}>
-
-                            <Block>
-                                餘額： 1000點
-                            </Block>
                             <List>
                                 <ListItem
                                     className={"bg-gray-200"}
+                                    href={"/wallet/balance"}
+                                    title={"餘額"}
+                                    media={<CurrencyDollarIcon className={"h-6 w-6"}/>}
+                                    link
+                                    after={"1000"}
+                                ></ListItem>
+                                <ListItem
+                                    className={"bg-gray-200"}
                                     href={"/achievement"}
-                                    text={"成就與徽章"}
+                                    title={"成就與徽章"}
+                                    media={<CheckBadgeIcon className={"h-6 w-6"}/>}
+                                    link
                                 ></ListItem>
                                 <ListItem
                                     className={"bg-gray-200"}
                                     href={"/wallet/detail"}
-                                    text={"交易紀錄"}
+                                    title={"交易紀錄"}
+                                    media={<DocumentIcon className={"h-6 w-6"}/>}
+                                    link
                                 ></ListItem>
                                 <ListItem
                                     className={"bg-gray-200"}
                                     href={"/store/favorite"}
-                                    text={"收藏商家"}
+                                    title={"收藏商家"}
+                                    media={<BookmarkIcon className={"h-6 w-6"}/>}
+                                    link
                                 ></ListItem>
                                 <ListItem
-                                    className={"bg-gray-200"}
+                                    className={"bgㄛˇ-gray-200"}
                                     href={"/wallet/coupon"}
-                                    text={"我的優惠券"}
+                                    title={"我的優惠券"}
+                                    media={<BanknotesIcon className={"h-6 w-6"}/>}
+                                    link
                                 ></ListItem>
                             </List>
                             <Button onClick={() => router.push('/seller')}
