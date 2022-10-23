@@ -127,6 +127,11 @@ export default function WalletDetail() {
                             + stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].description
                         }
                     </div>
+                    <div className={"flex flex-col bg-gray-200 rounded-t px-2 py-2 text-center mt-4"}>
+                        {"耶～ 本次 MaPay 幫您省下了 $"
+                            + (totalPrice- Math.floor(finalPrice * stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].discount_ratio)).toString()
+                        }
+                    </div>
                     <div className="">
                         <Button onClick={pay}>支付
                             ${Math.floor(finalPrice * stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].discount_ratio)}</Button>
