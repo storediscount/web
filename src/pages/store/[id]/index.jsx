@@ -16,10 +16,10 @@ import {useRouter} from "next/router";
 import DetailRecord from "../../../components/DetailRecord";
 import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 import Image from "next/image";
-import vip from "../../../assets/vip.json"
+import customerLevel from "../../../assets/customer_level.json"
 // import {BlockColors} from "konsta/shared/esm/colors/BlockColors";
 
-export default function Store({place: {id, lat, lng, name, img}}) {
+export default function Store({place: {id, lat, lng, name, img, vip}}) {
     const router = useRouter()
     return (
         <Page>
@@ -65,6 +65,22 @@ export default function Store({place: {id, lat, lng, name, img}}) {
                 </p>
             </Block>
 
+            <BlockTitle>成為熟客</BlockTitle>
+            <Block>
+                <p>{"您現在的熟客等級：" + vip[customerLevel[0][id]].name}</p>
+            </Block>
+            <List strongIos outlineIos>
+                {
+                    vip.map(each_level => (
+                        <ListItem
+                            title={each_level.name}
+                            text={each_level.description}
+                        />
+                    ))
+                }
+            </List>
+
+
             <BlockTitle>消費紀錄</BlockTitle>
             <List strongIos outlineIos>
                 {transactionRecord.filter((record) => record.storeId === id).map((record) => (
@@ -77,28 +93,8 @@ export default function Store({place: {id, lat, lng, name, img}}) {
                     />
                 ))}
             </List>
-
-            <BlockTitle>成為熟客</BlockTitle>
-            <Block>
-                <p>{"您現在的熟客等級："+vip[0][id]}</p>
-                <p></p>
-                <List strongIos outlineIos>
-                    <ListItem
-                        title="VIP 💎"
-                        text="訂單 98 折"
-                    />
-                    <ListItem
-                        title="VVIP 💎💎"
-                        text="訂單 95 折，且享有生日贈禮"
-                    />
-                    <ListItem
-                        title="VVVIP 💎💎💎"
-                        text="訂單 92 折，且享有生日贈禮"
-                    />
-                </List>
-            </Block>
-
         </Page>
+
     )
 }
 
