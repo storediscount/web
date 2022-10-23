@@ -16,7 +16,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 export default function Me() {
-    const router = useRouter()
+    const router = useRouter() // fuck
 
     const [logined, setLogined] = useState(false)
     const [user, setUser] = useState({})
