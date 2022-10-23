@@ -23,8 +23,13 @@
         "items": [
             {
                 "name": "雞排",
-                "number": "1",
-                "cost": "60"
+                "number": "5",
+                "cost": "275"
+            },
+            {
+                "name": "四季豆",
+                "number": "2",
+                "cost": "40"
             },
             {
                 "name": "台南大扁",
