@@ -154,11 +154,13 @@ export default function Home() {
                         <ListItem
                             title="掃一掃"
                             link
+                            href={'/wallet/pay'}
                             onClick={() => setPopoverOpened(false)}
                         />
                         <ListItem
                             title="我的條碼"
                             link
+                            href={'/wallet/mycode'}
                             onClick={() => setPopoverOpened(false)}
                         />
                     </List>
