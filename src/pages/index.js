@@ -11,12 +11,18 @@ import {Sheet, Toolbar} from "konsta/react";
 import {Button} from "konsta/react";
 import {useRef, useState} from "react";
 import {useRouter} from "next/router";
-import {CurrencyDollarIcon, HomeIcon, UserCircleIcon} from "@heroicons/react/24/outline";
+import {
+    ArchiveBoxIcon,
+    CurrencyDollarIcon,
+    HandThumbUpIcon,
+    HomeIcon,
+    UserCircleIcon
+} from "@heroicons/react/24/outline";
 import {Popover} from "konsta/react";
 import {Tabbar, TabbarLink} from "konsta/react";
 import {Icon} from "konsta/react";
 import recommendations from "../assets/recommendation.json"
-import {CreditCardIcon, EyeIcon} from "@heroicons/react/20/solid";
+import {CreditCardIcon, EyeIcon, ShareIcon} from "@heroicons/react/20/solid";
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
@@ -73,9 +79,17 @@ export default function Home() {
                             key={recommend.id}
                             link
                             innerChildren={
-                                <div className={"flex flex-row items-center"}>
-                                    {Math.random() > 0.5 && <div className={"px-2 py-1 mr-3 my-1 bg-red-500 rounded text-white font-bold"}>HOT!!</div> }
-                                    <EyeIcon className={"h-4 w-4"}/> {Math.floor(Math.random() * 15)}
+                                <div className={"flex flex-col w-full"}>
+                                    <div className={"flex flex-row items-center"}>
+                                        {Math.random() > 0.5 && <div
+                                            className={"px-2 py-1 mr-3 my-1 bg-red-500 rounded text-white font-bold"}>HOT!!</div>}
+                                        <EyeIcon className={"h-4 w-4"}/> {Math.floor(Math.random() * 15)}
+                                    </div>
+                                    <div className={"flex flex-row items-center gap-5 w-full"}>
+                                        <div className={"inline-flex"}><HandThumbUpIcon className={"h-5 w-5"}/>按讚</div>
+                                        <div className={"inline-flex"}><ArchiveBoxIcon className={"h-5 w-5"}/>留言</div>
+                                        <div className={"inline-flex"}><ShareIcon className={"h-5 w-5"}/>分享</div>
+                                    </div>
                                 </div>
                             }
                             title={recommend.name}
