@@ -12,16 +12,17 @@ import UserStoreInvoiceList from "../../../components/UserStoreInvoiceList";
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
-export default function Recommend({reco: {id, stores, name}}) {
+export default function Recommend({reco: {id, stores, name, content}}) {
     const router = useRouter()
     return (
         <Page>
             <Head>
-                <title>{titleFormatter("推薦行程："+name)}</title>
+                <title>{titleFormatter("推薦行程：" + name)}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Navbar title={titleFormatter(name)}
-                    left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon className={"h-4 w-4"}/>返回</Link>}/>
+                    left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon
+                        className={"h-4 w-4"}/>返回</Link>}/>
             <Block>
                 <Map className={styles.homeMap} center={DEFAULT_CENTER} zoom={16}>
                     {({TileLayer, Marker, Popup}) => (
@@ -31,18 +32,22 @@ export default function Recommend({reco: {id, stores, name}}) {
                                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                             />
                             {stores.map(sid => (
-                                    <Marker position={[getObjectByID(sid).lat, getObjectByID(sid).lng]}>
-                                        <Popup>
-                                            <Link onClick={() => openSheet(getObjectByID(sid).id)}>{getObjectByID(sid).name}</Link>
-                                        </Popup>
-                                    </Marker>
+                                <Marker position={[getObjectByID(sid).lat, getObjectByID(sid).lng]}>
+                                    <Popup>
+                                        <Link
+                                            onClick={() => openSheet(getObjectByID(sid).id)}>{getObjectByID(sid).name}</Link>
+                                    </Popup>
+                                </Marker>
                             ))}
                         </>
                     )}
                 </Map>
             </Block>
 
-            <BlockTitle>推薦商家列表</BlockTitle>
+            <p className={"mx-4 text-3xl font-bold"}>{name}</p>
+            <div className={"mx-4"} dangerouslySetInnerHTML={{__html: content.replaceAll("\n", '<br/>')}}></div>
+
+            <BlockTitle>文中推薦商家列表</BlockTitle>
             <List strongIos outlineIos>
                 {stores.map(sid => (
                     <ListItem
