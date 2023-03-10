@@ -95,11 +95,9 @@ export default function () {
                 {selectedTab === 1 &&
                     <div className={"flex flex-col"}>
                         <div className={"flex flex-col items-center gap-1 mb-2"}>
-                            <div className={"flex flex-row rounded-md items-center bg-indigo-500 p-3 w-full"}>
+                            <div className={"flex flex-row rounded-md items-center h-72 bg-[url('/image1.jpeg')] p-3 w-full"}>
                                 <div className={"flex flex-row justify-between items-center w-full"}>
-                                    <div className={"text-white"}>黑糖奶茶</div>
-                                    <div className={"text-white text-3xl font-bold"}>0<span
-                                        className={"text-sm"}>點</span></div>
+
                                 </div>
                             </div>
                             <div className={"font-bold"}>WBC經典賽，為中華健兒一起加油 #牛排</div>
@@ -113,8 +111,7 @@ export default function () {
                     <div className={"flex flex-col"}>
 
                         <div className={"flex flex-col rounded-md mb-2 bg-white shadow-lg"}>
-                            <div className={"flex flex-row items-center bg-indigo-500 p-3 w-full h-24"}>
-
+                            <div className={"flex flex-row items-center p-3 w-full h-72 bg-[url('/image2.jpeg')]"}>
                             </div>
                             <div className={"font-bold w-full text-center mt-2"}>政府發現金 來米塔吃貨慶</div>
                             <div className={"text-gray-500 w-full text-sm text-center"}>2023/02/04</div>
