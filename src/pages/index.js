@@ -16,7 +16,7 @@ import {Popover} from "konsta/react";
 import {Tabbar, TabbarLink} from "konsta/react";
 import {Icon} from "konsta/react";
 import recommendations from "../assets/recommendation.json"
-import {EyeIcon} from "@heroicons/react/20/solid";
+import {CreditCardIcon, EyeIcon} from "@heroicons/react/20/solid";
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
@@ -144,6 +144,13 @@ export default function Home() {
                             icon={<Icon ios={<CurrencyDollarIcon/>} className={"w-6 h-6"}/>}
                             active={router.pathname.startsWith("/wallet")}
                             label={isTabbarLabels && "支付"}
+                ></TabbarLink>
+                <TabbarLink tabbar
+                            className={"flex flex-col items-center justify-center"}
+                            onClick={() => router.push("/card")}
+                            icon={<Icon ios={<CreditCardIcon/>} className={"w-6 h-6"}/>}
+                            active={router.pathname === "/card"}
+                            label={isTabbarLabels && "會員卡"}
                 ></TabbarLink>
                 <TabbarLink tabbar
                             className={"flex flex-col items-center justify-center"}
