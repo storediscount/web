@@ -21,7 +21,7 @@ export default function () {
         {name: '品牌動態', count: <NewspaperIcon/>},
         {name: '品牌資訊', count: <BuildingOffice2Icon/>},
     ]
-    const [selectedTab, setSelectedTab] = useState(3)
+    const [selectedTab, setSelectedTab] = useState(0)
     return (
         <Page>
             <Head>
