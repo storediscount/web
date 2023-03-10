@@ -17,10 +17,15 @@ export default function () {
                     left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon
                         className={"h-4 w-4"}/>返回</Link>}/>
 
-            <div className={"flex flex-col items-center justify-center bg-gray-200 p-4 mx-2 h-1/5 cursor-pointer rounded-lg brightness-75"}
-                 onClick={()=>router.push('/card/1')}
+            <div
+                className={"flex flex-col items-center justify-center bg-gray-200 p-4 mx-2 h-2/6 cursor-pointer rounded-lg brightness-75"}
+                onClick={() => router.push('/card/1')}
             >
-                <div className={"h-[50px] w-[50px] rounded brightness-200 drop-shadow"} style={{backgroundImage: "url('https://i.imgur.com/OVyy1m5.jpeg')"}}></div>
+                <div className={"flex flex-col items-center"}>
+                    <div className={"h-[50px] w-[50px] rounded brightness-200 drop-shadow"}
+                         style={{backgroundImage: "url('https://i.imgur.com/OVyy1m5.jpeg')"}}></div>
+                    <span style={{fontSize: "10px"}}>粒徑豆花</span>
+                </div>
             </div>
         </Page>
     )
