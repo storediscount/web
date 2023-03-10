@@ -4,8 +4,9 @@ import {Link, Navbar, Page} from "konsta/react";
 import {ChevronLeftIcon, ClockIcon} from "@heroicons/react/24/outline";
 import {useRouter} from "next/router";
 import Image from "next/image";
-import {BuildingOffice2Icon, NewspaperIcon} from "@heroicons/react/20/solid";
+import {BuildingOffice2Icon, EyeIcon, HeartIcon, NewspaperIcon} from "@heroicons/react/20/solid";
 import {useState} from "react";
+import {InformationCircleIcon} from "@heroicons/react/24/solid";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -20,7 +21,7 @@ export default function () {
         {name: '品牌動態', count: <NewspaperIcon/>},
         {name: '品牌資訊', count: <BuildingOffice2Icon/>},
     ]
-    const [selectedTab, setSelectedTab] = useState(2)
+    const [selectedTab, setSelectedTab] = useState(3)
     return (
         <Page>
             <Head>
@@ -102,22 +103,76 @@ export default function () {
                                 </div>
                             </div>
                             <div className={"font-bold"}>WBC經典賽，為中華健兒一起加油 #牛排</div>
-                            <div className={"text-gray-500 flex flex-row items-center"}><ClockIcon className={"h-5 w-5"}/> 2021/06/30 22:00 到期</div>
+                            <div className={"text-gray-500 flex flex-row items-center"}><ClockIcon
+                                className={"h-5 w-5"}/> 2021/06/30 22:00 到期
+                            </div>
                         </div>
                     </div>
                 }
-                {selectedTab === 1 &&
+                {selectedTab === 2 &&
                     <div className={"flex flex-col"}>
-                        <div className={"flex flex-col items-center gap-1 mb-2"}>
-                            <div className={"flex flex-row rounded-md items-center bg-indigo-500 p-3 w-full"}>
-                                <div className={"flex flex-row justify-between items-center w-full"}>
-                                    <div className={"text-white"}>黑糖奶茶</div>
-                                    <div className={"text-white text-3xl font-bold"}>0<span
-                                        className={"text-sm"}>點</span></div>
+
+                        <div className={"flex flex-col rounded-md mb-2 bg-white shadow-lg"}>
+                            <div className={"flex flex-row items-center bg-indigo-500 p-3 w-full h-24"}>
+
+                            </div>
+                            <div className={"font-bold w-full text-center mt-2"}>政府發現金 來米塔吃貨慶</div>
+                            <div className={"text-gray-500 w-full text-sm text-center"}>2023/02/04</div>
+                            <div className={"p-4"}>
+                                <div className={""}>
+                                    31週年慶，歡迎各位來用餐
+
+                                </div>
+                                <div className={"flex flex-row justify-between items-center"}>
+                                    <div className={"inline-flex items-center text-gray-500"}>
+                                        <HeartIcon
+                                            className={"h-5 w-5"}/>9
+                                    </div>
+                                    <div className={"inline-flex items-center text-gray-500"}>
+                                        <EyeIcon
+                                            className={"h-5 w-5"}/>繼續閱讀
+                                    </div>
+
                                 </div>
                             </div>
-                            <div className={"font-bold"}>WBC經典賽，為中華健兒一起加油 #牛排</div>
-                            <div className={"text-gray-500 flex flex-row items-center"}><ClockIcon className={"h-5 w-5"}/> 2021/06/30 22:00 到期</div>
+                        </div>
+
+                    </div>
+                }
+                {selectedTab === 3 &&
+                    <div className={"flex flex-col"}>
+                        <div className={"flex flex-col rounded-md mb-2 bg-white shadow-lg"}>
+                            <div className={"flex flex-row items-center p-3 w-full"}>
+                                米塔集團是一家以科技創新為核心的多元化企業集團，總部位於台灣。該集團擁有多家子公司，從電腦主機板、筆電、平板、智慧穿戴裝置、到網路服務等領域均有涉足。集團注重研發與創新，擁有強大的技術實力和國際化的經營策略，並且不斷推出具有創新性的產品和服務。此外，集團也重視企業社會責任，積極參與公益活動，致力於推動社會的可持續發展。
+                            </div>
+                        </div>
+
+                        <span className={"mt-4 font-bold"}>店家 VIP</span>
+                        <div className={"flex flex-col gap-2 mb-2"}>
+                            <div className={"flex flex-row rounded-lg items-center bg-indigo-500 p-3"}>
+                                <div className={"flex flex-row justify-between items-center w-full"}>
+                                    <div className={"text-white"}>網路會員</div>
+                                    <div className={"bg-white p-1 rounded-xl font-bold"}>已持有</div>
+                                </div>
+                            </div>
+                            <div className={"flex flex-row rounded-lg items-center bg-indigo-500 p-3"}>
+                                <div className={"flex flex-row justify-between items-center w-full"}>
+                                    <div className={"text-white"}>白金會員</div>
+                                    <div className={""}><InformationCircleIcon className={"h-5 w-5 text-white"}/></div>
+                                </div>
+                            </div>
+                            <div className={"flex flex-row rounded-lg items-center bg-indigo-500 p-3"}>
+                                <div className={"flex flex-row justify-between items-center w-full"}>
+                                    <div className={"text-white"}>黃金會員</div>
+                                    <div className={""}><InformationCircleIcon className={"h-5 w-5 text-white"}/></div>
+                                </div>
+                            </div>
+                            <div className={"flex flex-row rounded-lg items-center bg-indigo-500 p-3"}>
+                                <div className={"flex flex-row justify-between items-center w-full"}>
+                                    <div className={"text-white"}>鑽石會員</div>
+                                    <div className={""}><InformationCircleIcon className={"h-5 w-5 text-white"}/></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 }
