@@ -112,7 +112,7 @@ export default function Me() {
                                 ></ListItem>
                             </List>
                             <Button onClick={() => router.push('/seller')}
-                                    className={`mt-8 ${user.type !== "商家" && "hidden"}`}>商家管理頁面</Button>
+                                    className={`mt-8 ${user?.type !== "商家" && "hidden"}`}>商家管理頁面</Button>
                             <Button onClick={() => logout()} className={`mt-8 `}>登出</Button>
                         </div>
                     </div>
