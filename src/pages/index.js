@@ -16,6 +16,7 @@ import {Popover} from "konsta/react";
 import {Tabbar, TabbarLink} from "konsta/react";
 import {Icon} from "konsta/react";
 import recommendations from "../assets/recommendation.json"
+import {EyeIcon} from "@heroicons/react/20/solid";
 
 const DEFAULT_CENTER = [24.7972217, 120.9966699]
 
@@ -67,19 +68,25 @@ export default function Home() {
             <BlockTitle>推薦行程</BlockTitle>
             <Block>
                 <List strong>
-                    {recommendations.map(recommend=>(
+                    {recommendations.map(recommend => (
                         <ListItem
                             key={recommend.id}
                             link
+                            innerChildren={
+                                <div className={"flex flex-row items-center"}>
+                                    {Math.random() > 0.5 && <div className={"px-2 py-1 mr-3 my-1 bg-red-500 rounded text-white font-bold"}>HOT!!</div> }
+                                    <EyeIcon className={"h-4 w-4"}/> {Math.floor(Math.random() * 15)}
+                                </div>
+                            }
                             title={recommend.name}
-                            onClick={()=>router.push(`/recommendation/${recommend.id}`)}
+                            onClick={() => router.push(`/recommendation/${recommend.id}`)}
                         />
                     ))}
                     <ListItem
                         link
                         className={"font-bold"}
                         title={'顯示更多...'}
-                        onClick={()=>router.push(`/recommendation`)}
+                        onClick={() => router.push(`/recommendation`)}
                     />
                 </List>
             </Block>
