@@ -21,6 +21,16 @@ export default function () {
         {title: '北部', value: 25, color: '#6A2135'},
         {title: '東部', value: 2, color: '#88ebd2'},
     ]
+    const data2 = [
+        {title: '男性', value: 25, color: '#5544db'},
+        {title: '女性', value: 30, color: '#f180ad'},
+    ]
+    const data3 = [
+        {title: '10~20歲', value: 5, color: '#f8d9ae'},
+        {title: '20~30歲', value: 20, color: '#88ebd2'},
+        {title: '30~40歲', value: 25, color: '#5544db'},
+        {title: '40歲以上', value: 7, color: '#f180ad'},
+    ]
     return (
         <Page>
             <Head>
@@ -77,6 +87,30 @@ export default function () {
                     data={data}
                     segmentsShift={0.5}
                     label={({dataEntry}) => dataEntry.title + (dataEntry.value / data.reduce((a, b) => a + b.value, 0) * 100).toFixed(2) + '%'}
+                    labelStyle={{
+                        fontSize: '5px',
+                        fontFamily: 'sans-serif'
+                    }}
+                    style={{height: '400px'}}
+                />
+
+                <span className={"mt-4 font-bold"}>來客性別分析</span>
+                <PieChart
+                    data={data2}
+                    segmentsShift={0.5}
+                    label={({dataEntry}) => dataEntry.title + (dataEntry.value / data2.reduce((a, b) => a + b.value, 0) * 100).toFixed(2) + '%'}
+                    labelStyle={{
+                        fontSize: '5px',
+                        fontFamily: 'sans-serif'
+                    }}
+                    style={{height: '400px'}}
+                />
+
+                <span className={"mt-4 font-bold"}>來客年齡分析</span>
+                <PieChart
+                    data={data3}
+                    segmentsShift={0.5}
+                    label={({dataEntry}) => dataEntry.title + (dataEntry.value / data3.reduce((a, b) => a + b.value, 0) * 100).toFixed(2) + '%'}
                     labelStyle={{
                         fontSize: '5px',
                         fontFamily: 'sans-serif'
