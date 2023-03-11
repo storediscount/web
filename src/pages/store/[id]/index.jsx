@@ -39,26 +39,10 @@ export default function Store({place: {id, lat, lng, name, img, vip}}) {
             <Navbar title={titleFormatter(name)}
                     left={<Link onClick={() => router.back()} navbar><ChevronLeftIcon
                         className={"h-4 w-4"}/>返回</Link>}/>
-            {/*<Block>*/}
-            <Map className={styles.homeMap} center={[lat, lng]} zoom={20}>
-                {({TileLayer, Marker, Popup}) => (
-                    <>
-                        <TileLayer
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                        />
-                        <Marker position={[lat, lng]}>
-                            <Popup>
-                                {name}
-                            </Popup>
-                        </Marker>
-                    </>
-                )}
-            </Map>
-            {/*</Block>*/}
-            {/*<Block strong inset outline>*/}
-            {/*    <img src={"/images/store/"+img}/>*/}
-            {/*</Block>*/}
+
+            <Block strong outline>
+                <img src={"/images/store/"+img}/>
+            </Block>
 
             <BlockTitle>商家資訊</BlockTitle>
             <Block strong>
@@ -105,9 +89,10 @@ export default function Store({place: {id, lat, lng, name, img, vip}}) {
                             />
                         }
                         innerChildren={<div className={"flex flex-row"}>
-                            <HandThumbUpIcon className={`h-6 w-6 ${isUpvoted && 'text-red-300'}`}/>
+                            <HandThumbUpIcon className={'h-6 w-6'}/>
                             {7 + Math.ceil(Math.random() * 10)} &nbsp;
-                            <HandThumbDownIcon className={`h-6 w-6 ${isDevoted && 'text-red-300'}`}/>
+                            <HandThumbDownIcon className={'h-6 w-6'}/>
+                            {Math.ceil(Math.random() * 5)}
                         </div>}
                     />
                 ))}
