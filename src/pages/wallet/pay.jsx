@@ -66,14 +66,6 @@ export default function WalletDetail() {
                 icon: "success",
                 title: "支付狀態",
                 text: "支付成功",
-            }).then(() => {
-                setNotPaying(true)
-                Swal.fire({
-                    iconHtml: '<img src="/images/badge/吃我一記金錢攻擊.png">',
-                    title: "成就解鎖",
-                    text: "恭喜你解鎖「吃我一記金錢攻擊」"
-                })
-                router.replace('/')
             })
         }, 2000)
         // build 2
@@ -148,7 +140,7 @@ export default function WalletDetail() {
                     </div>
                     <div className="">
                         <Button onClick={pay}>支付
-                            ${Math.floor(finalPrice * stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].discount_ratio)}</Button>
+                            ${210 + Math.floor(finalPrice * stores.find(st => st.id.toString() === store.toString()).vip[customerLevel[0][store.toString()]].discount_ratio)}</Button>
                     </div>
                 </Block>
             </Sheet>
