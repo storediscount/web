@@ -70,6 +70,15 @@ export default function Recommend({reco: {id, stores, name, content}}) {
                     />
                 ))}
             </List>
+            <div className={"fixed bottom-4 w-full flex items-center justify-center py-6 z-10"}>
+                <div className={"bg-orange-400 p-4 rounded-lg flex gap-8 shadow-lg"}>
+                    <div className={"flex flex-col"}>
+                        <div className={"text-lg"}>限時商家85折卷</div>
+                        <div className={"text-sm text-gray-600"}>*僅限於此3間店家使用</div>
+                    </div>
+                    <div className={"border border-white text-white p-2 rounded-2xl inline-flex items-center"}>立即領卷</div>
+                </div>
+            </div>
         </Page>
     )
 }
