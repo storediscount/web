@@ -110,6 +110,13 @@ export default function Me() {
                                     media={<BanknotesIcon className={"h-6 w-6"}/>}
                                     link
                                 ></ListItem>
+                                <ListItem
+                                    className={"bg-gray-200"}
+                                    href={"/analyze"}
+                                    title={"顧客分析"}
+                                    media={<BanknotesIcon className={"h-6 w-6"}/>}
+                                    link
+                                ></ListItem>
                             </List>
                             <Button onClick={() => router.push('/seller')}
                                     className={`mt-8 ${user?.type !== "商家" && "hidden"}`}>商家管理頁面</Button>
