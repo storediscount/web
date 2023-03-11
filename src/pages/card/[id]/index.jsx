@@ -13,7 +13,7 @@ function classNames(...classes) {
 }
 
 export default function () {
-    const name = "米塔會員";
+    const name = "開源社會員";
     const router = useRouter();
     const tabs = [
         {name: '點數', count: 25},
@@ -36,7 +36,7 @@ export default function () {
                 <div className={"flex flex-row justify-center items-center rounded-xl bg-gray-400 py-5 w-full"}>
                     <div className={"flex flex-col items-center"}>
                         <Image src={"/logo.png"} width={80} height={80} className={"rounded-xl"}/>
-                        <div className={"text-lg"}>米塔集團</div>
+                        <div className={"text-lg"}>開源社會員</div>
                         <div className={"text-sm"}>網路會員</div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ export default function () {
                             <div className={"flex flex-row rounded-lg items-center bg-indigo-500 p-3"}>
                                 <div className={"flex flex-row justify-between items-center w-full"}>
                                     <div className={"text-white"}>黑糖奶茶</div>
-                                    <div className={"text-white text-3xl font-bold"}>0<span
+                                    <div className={"text-white text-3xl font-bold"}>5<span
                                         className={"text-sm"}>點</span></div>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@ export default function () {
                     <div className={"flex flex-col"}>
                         <div className={"flex flex-col rounded-md mb-2 bg-white shadow-lg"}>
                             <div className={"flex flex-row items-center p-3 w-full"}>
-                                米塔集團是一家以科技創新為核心的多元化企業集團，總部位於台灣。該集團擁有多家子公司，從電腦主機板、筆電、平板、智慧穿戴裝置、到網路服務等領域均有涉足。集團注重研發與創新，擁有強大的技術實力和國際化的經營策略，並且不斷推出具有創新性的產品和服務。此外，集團也重視企業社會責任，積極參與公益活動，致力於推動社會的可持續發展。
+                                開源社雞排是台灣著名的路邊小吃之一，也是台灣人心目中的美食經典之一。它的成功秘訣在於精選優質食材，嚴格的製作流程和獨特的口味調配。每個開源社雞排都經過精心的挑選和處理，炸至金黃酥脆，外酥內嫩，吃起來口感絕佳。此外，開源社雞排的成功也與台灣文化的連結有關，它不僅代表著台灣路邊小吃文化的一部分，更是許多人童年回憶的一部分。
                             </div>
                         </div>
 
@@ -149,7 +149,7 @@ export default function () {
                             <div className={"flex flex-row rounded-lg items-center bg-indigo-500 p-3"}>
                                 <div className={"flex flex-row justify-between items-center w-full"}>
                                     <div className={"text-white"}>網路會員</div>
-                                    <div className={"bg-white p-1 rounded-xl font-bold"}>已持有</div>
+                                    <div className={"bg-white p-1 rounded-xl font-bold"}>95折 已持有</div>
                                 </div>
                             </div>
                             <div className={"flex flex-row rounded-lg items-center bg-indigo-500 p-3"}>
